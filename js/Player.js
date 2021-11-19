@@ -17,8 +17,8 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
   }
 
   static preload(scene) {
-    scene.load.atlas("main_character", "../assets/images/main-character/main_character.png ", "../assets/images/main-character/main_character_atlas.json");
-    scene.load.animation("main_character", "../assets/images/main-character/main_character_anim.json");
+    scene.load.atlas("main_character", "./assets/images/main-character/main_character.png ", "./assets/images/main-character/main_character_atlas.json");
+    scene.load.animation("main_character", "./assets/images/main-character/main_character_anim.json");
   }
 
   update() {
