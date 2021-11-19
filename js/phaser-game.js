@@ -8,7 +8,8 @@ const config = {
   parent: "phaser-game",
   scene: [SceneOne],
   scale: {
-    zoom: 2,
+    // mode: Phaser.Scale.FIT,
+    zoom: 1.5,
   },
   physics: {
     default: "matter",

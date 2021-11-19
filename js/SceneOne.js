@@ -12,6 +12,8 @@ export default class SceneOne extends Phaser.Scene {
   }
 
   create() {
+    // this.scale.displaySize.setAspectRatio(width / height);
+    // this.scale.refresh();
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("dirt", "tiles", 32, 32, 0, 0);
     const layer1 = map.createStaticLayer("Tile Layer 1", tileset, 0, 0);
