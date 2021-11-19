@@ -18,12 +18,13 @@ export default class SceneOne extends Phaser.Scene {
     // this.scale.displaySize.setAspectRatio(width / height);
     // this.scale.refresh();
     const map = this.make.tilemap({ key: "map" });
+    this.map = map;
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
     const groundObjects = map.addTilesetImage("elements", "elements", 32, 32, 0, 0);
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
-    const layer1 = map.createStaticLayer("Tile Layer 1", groundDirt, 0, 0);
-    const layer2 = map.createStaticLayer("Tile Layer 2", groundObjects, 0, 0);
-    const layer3 = map.createStaticLayer("Tile Layer 3", resources, 0, 0);
+    const layer1 = map.createLayer("Tile Layer 1", groundDirt, 0, 0);
+    const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
+    const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -31,14 +32,15 @@ export default class SceneOne extends Phaser.Scene {
     layer3.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer3);
 
-    //treasure items
-    let coins = new Phaser.Physics.Matter.Sprite(this.matter.world, 280, 500, "treasure", "coins");
-    let sack = new Phaser.Physics.Matter.Sprite(this.matter.world, 80, 500, "treasure", "sack");
-    coins.setStatic(true);
-    sack.setStatic(true);
+    // let coins = new Phaser.Physics.Matter.Sprite(this.matter.world, 50, 50, "treasure", "coins");
+    // let chest = new Phaser.Physics.Matter.Sprite(this.matter.world, 150, 150, "treasure", "chest");
+    // coins.setStatic(true);
+    // chest.setStatic(true);
+    // this.add.existing(coins);
+    // this.add.existing(chest);
 
-    this.add.existing(coins);
-    this.add.existing(sack);
+    this.addTreasure();
+
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -47,7 +49,20 @@ export default class SceneOne extends Phaser.Scene {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
   }
-  w;
+
+  addTreasure() {
+    const treasure = this.map.getObjectLayer("Treasure");
+    treasure.objects.forEach((treasure) => {
+      let treItem = new Phaser.Physics.Matter.Sprite(this.matter.world, treasure.x, treasure.y, "treasure", treasure.type);
+
+      // const { Body, Bodies } = Phaser.Physics.Matter.Matter;
+      // var circleCollider = Bodies.circle(resItem.x, resItem.y, 12, { isSensor: false, label: "collider" });
+      // treItem.setExistingBody(circleCollider);
+
+      treItem.setStatic(true);
+      this.add.existing(treItem);
+    });
+  }
 
   update() {
     this.player.update();
