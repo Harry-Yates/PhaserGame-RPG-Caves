@@ -9,6 +9,7 @@ export default class Treasure extends Phaser.Physics.Matter.Sprite {
     this.scene.add.existing(this);
     let yOrigin = treasure.properties.find((p) => p.name == "yOrigin").value;
     this.name = treasure.type;
+    this.health = 5;
     this.x += this.width / 2;
     this.y -= this.height / 2;
     this.y = this.y + this.height * (yOrigin - 0.5);
@@ -18,4 +19,14 @@ export default class Treasure extends Phaser.Physics.Matter.Sprite {
     this.setStatic(true);
     this.setOrigin(0.5, 0.3);
   }
+
+  get dead() {
+    return this.health <= 0;
+  }
+
+  hit = () => {
+    if (this.sound) this.sound.play();
+    this.health--;
+    console.log(`Collected:${this.name} Health:${this.health}`);
+  };
 }

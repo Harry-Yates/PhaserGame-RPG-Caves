@@ -34,6 +34,7 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer3);
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
+    // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,

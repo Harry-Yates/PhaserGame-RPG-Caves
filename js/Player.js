@@ -28,19 +28,22 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     let playerVelocity = new Phaser.Math.Vector2();
     if (this.inputKeys.left.isDown) {
       this.anims.play("walk_left", true);
+      this.collectTreasure();
       playerVelocity.x = -1;
     } else if (this.inputKeys.right.isDown) {
       this.anims.play("walk_right", true);
+      this.collectTreasure();
       playerVelocity.x = 1;
     }
     if (this.inputKeys.up.isDown) {
       this.anims.play("walk_up", true);
+      this.collectTreasure();
       playerVelocity.y = -1;
     } else if (this.inputKeys.down.isDown) {
       this.anims.play("walk_down", true);
+      this.collectTreasure();
       playerVelocity.y = 1;
     }
-
     if (this.inputKeys.down.isUp && this.inputKeys.up.isUp && this.inputKeys.left.isUp && this.inputKeys.right.isUp) {
       this.anims.stop();
     }
@@ -61,6 +64,7 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       },
       context: this.scene,
     });
+
     this.scene.matterCollision.addOnCollideEnd({
       objectA: [playerSensor],
       callback: (other) => {
@@ -68,6 +72,13 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
         console.log(this.touching.length);
       },
       context: this.scene,
+    });
+  }
+  collectTreasure() {
+    this.touching = this.touching.filter((gameObject) => gameObject.hit && !gameObject.dead);
+    this.touching.forEach((gameobject) => {
+      gameobject.hit();
+      if (gameobject.dead) gameobject.destroy();
     });
   }
 }
