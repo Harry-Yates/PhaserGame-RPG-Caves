@@ -52,7 +52,7 @@
                 {
                  "gid":1811,
                  "height":32,
-                 "id":17,
+                 "id":47,
                  "name":"",
                  "properties":[
                         {
@@ -70,7 +70,99 @@
                  "visible":true,
                  "width":32,
                  "x":256,
-                 "y":320
+                 "y":512
+                }, 
+                {
+                 "gid":1811,
+                 "height":32,
+                 "id":48,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"coins",
+                 "visible":true,
+                 "width":32,
+                 "x":224,
+                 "y":384
+                }, 
+                {
+                 "gid":1811,
+                 "height":32,
+                 "id":49,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"coins",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":512
+                }, 
+                {
+                 "gid":1803,
+                 "height":32,
+                 "id":50,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"sack",
+                 "visible":true,
+                 "width":32,
+                 "x":96,
+                 "y":384
+                }, 
+                {
+                 "gid":1803,
+                 "height":32,
+                 "id":51,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"sack",
+                 "visible":true,
+                 "width":32,
+                 "x":352,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -79,7 +171,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":18,
+ "nextobjectid":52,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

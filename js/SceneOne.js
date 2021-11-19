@@ -54,11 +54,17 @@ export default class SceneOne extends Phaser.Scene {
     const treasure = this.map.getObjectLayer("Treasure");
     treasure.objects.forEach((treasure) => {
       let treItem = new Phaser.Physics.Matter.Sprite(this.matter.world, treasure.x, treasure.y, "treasure", treasure.type);
-
+      let yOrigin = treasure.properties.find((p) => p.name == "yOrigin").value;
+      treItem.x += treItem.width / 2;
+      treItem.y -= treItem.height / 2;
+      treItem.y = treItem.y + treItem.height * (yOrigin - 0.5);
+      const { Body, Bodies } = Phaser.Physics.Matter.Matter;
+      var circleCollider = Bodies.circle(treItem.x, treItem.y, 12, { isSensor: false, label: "collider" });
+      treItem.setExistingBody(circleCollider);
       // const { Body, Bodies } = Phaser.Physics.Matter.Matter;
       // var circleCollider = Bodies.circle(resItem.x, resItem.y, 12, { isSensor: false, label: "collider" });
       // treItem.setExistingBody(circleCollider);
-
+      treItem.setOrigin(0.5, 0.3);
       treItem.setStatic(true);
       this.add.existing(treItem);
     });
