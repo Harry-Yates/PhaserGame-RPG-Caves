@@ -1,4 +1,5 @@
 import Player from "./Player.js";
+import Treasure from "./Treasure.js";
 
 export default class SceneOne extends Phaser.Scene {
   constructor() {
@@ -7,11 +8,11 @@ export default class SceneOne extends Phaser.Scene {
 
   preload() {
     Player.preload(this);
+    Treasure.preload(this);
     this.load.image("dirt", "./assets/images/map-environment/dirt.png");
     this.load.image("elements", "./assets/images/map-environment/elements.png");
     this.load.image("resources", "./assets/images/map-environment/resources.png");
     this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
-    this.load.atlas("treasure", "./assets/images/treasure/treasure.png", "./assets/images/treasure/treasure_atlas.json");
   }
 
   create() {
@@ -31,42 +32,13 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer2);
     layer3.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer3);
-
-    // let coins = new Phaser.Physics.Matter.Sprite(this.matter.world, 50, 50, "treasure", "coins");
-    // let chest = new Phaser.Physics.Matter.Sprite(this.matter.world, 150, 150, "treasure", "chest");
-    // coins.setStatic(true);
-    // chest.setStatic(true);
-    // this.add.existing(coins);
-    // this.add.existing(chest);
-
-    this.addTreasure();
-
+    this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
-    });
-  }
-
-  addTreasure() {
-    const treasure = this.map.getObjectLayer("Treasure");
-    treasure.objects.forEach((treasure) => {
-      let treItem = new Phaser.Physics.Matter.Sprite(this.matter.world, treasure.x, treasure.y, "treasure", treasure.type);
-      let yOrigin = treasure.properties.find((p) => p.name == "yOrigin").value;
-      treItem.x += treItem.width / 2;
-      treItem.y -= treItem.height / 2;
-      treItem.y = treItem.y + treItem.height * (yOrigin - 0.5);
-      const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-      var circleCollider = Bodies.circle(treItem.x, treItem.y, 12, { isSensor: false, label: "collider" });
-      treItem.setExistingBody(circleCollider);
-      // const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-      // var circleCollider = Bodies.circle(resItem.x, resItem.y, 12, { isSensor: false, label: "collider" });
-      // treItem.setExistingBody(circleCollider);
-      treItem.setOrigin(0.5, 0.3);
-      treItem.setStatic(true);
-      this.add.existing(treItem);
     });
   }
 
