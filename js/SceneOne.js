@@ -11,6 +11,7 @@ export default class SceneOne extends Phaser.Scene {
     this.load.image("elements", "./assets/images/map-environment/elements.png");
     this.load.image("resources", "./assets/images/map-environment/resources.png");
     this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
+    this.load.atlas("treasure", "./assets/images/treasure/treasure.png", "./assets/images/treasure/treasure_atlas.json");
   }
 
   create() {
@@ -30,6 +31,14 @@ export default class SceneOne extends Phaser.Scene {
     layer3.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer3);
 
+    //treasure items
+    let coins = new Phaser.Physics.Matter.Sprite(this.matter.world, 280, 500, "treasure", "coins");
+    let sack = new Phaser.Physics.Matter.Sprite(this.matter.world, 80, 500, "treasure", "sack");
+    coins.setStatic(true);
+    sack.setStatic(true);
+
+    this.add.existing(coins);
+    this.add.existing(sack);
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -38,6 +47,7 @@ export default class SceneOne extends Phaser.Scene {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
   }
+  w;
 
   update() {
     this.player.update();
