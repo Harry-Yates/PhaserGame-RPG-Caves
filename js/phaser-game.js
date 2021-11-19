@@ -1,7 +1,7 @@
 import SceneOne from "./SceneOne.js";
 
 const config = {
-  width: 375,
+  width: 384,
   height: 512,
   backgroundColor: "#333333",
   type: Phaser.AUTO,

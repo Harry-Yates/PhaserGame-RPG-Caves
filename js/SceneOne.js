@@ -7,7 +7,8 @@ export default class SceneOne extends Phaser.Scene {
 
   preload() {
     Player.preload(this);
-    this.load.image("tiles", "./assets/images/map-environment/dirt.png");
+    this.load.image("dirt", "./assets/images/map-environment/dirt.png");
+    this.load.image("elements", "./assets/images/map-environment/elements.png");
     this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
   }
 
@@ -15,8 +16,10 @@ export default class SceneOne extends Phaser.Scene {
     // this.scale.displaySize.setAspectRatio(width / height);
     // this.scale.refresh();
     const map = this.make.tilemap({ key: "map" });
-    const tileset = map.addTilesetImage("dirt", "tiles", 32, 32, 0, 0);
-    const layer1 = map.createStaticLayer("Tile Layer 1", tileset, 0, 0);
+    const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
+    const groundObjects = map.addTilesetImage("elements", "elements", 32, 32, 0, 0);
+    const layer1 = map.createStaticLayer("Tile Layer 1", groundDirt, 0, 0);
+    const layer2 = map.createStaticLayer("Tile Layer 2", groundObjects, 0, 0);
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
