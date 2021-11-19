@@ -13,11 +13,12 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
     });
     this.setExistingBody(compoundBody);
     this.setFixedRotation();
+    ``;
   }
 
   static preload(scene) {
     scene.load.atlas("main_character", "../assets/images/main-character/main_character.png ", "../assets/images/main-character/main_character_atlas.json");
-    scene.load.animation("female_anim", "../assets/images/main-character/main_character_anim.json");
+    scene.load.animation("main_character", "../assets/images/main-character/main_character_anim.json");
   }
 
   update() {
