@@ -1,0 +1,100 @@
+{
+    "anims": [
+        {
+            "key": "walk_right",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "main_character",
+                    "frame": "r1"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "r2"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "r3"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "r4"
+                }
+            ]
+        },
+        {
+            "key": "walk_left",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "main_character",
+                    "frame": "l1"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "l2"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "l3"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "l4"
+                }
+            ]
+        },
+        {
+            "key": "walk_down",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "main_character",
+                    "frame": "d1"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "d2"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "d3"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "d4"
+                }
+            ]
+        },
+        {
+            "key": "walk_up",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "main_character",
+                    "frame": "u1"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "u2"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "u3"
+                },
+                {
+                    "key": "main_character",
+                    "frame": "u4"
+                }
+            ]
+        }
+    ]
+}
