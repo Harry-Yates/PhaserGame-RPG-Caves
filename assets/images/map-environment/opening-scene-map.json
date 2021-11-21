@@ -61,9 +61,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -89,9 +94,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -117,9 +127,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -145,9 +160,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -173,9 +193,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -1316,6 +1341,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1347,6 +1377,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1389,6 +1424,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1420,6 +1460,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1523,6 +1568,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1532,6 +1582,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1541,6 +1596,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1583,6 +1643,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1686,6 +1751,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1695,6 +1765,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1704,6 +1779,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1713,6 +1793,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1827,6 +1912,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1858,6 +1948,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1889,6 +1984,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -1920,6 +2020,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":100
                         }]
                 }, 
                 {
@@ -8086,6 +8191,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth 2",
+                         "type":"int",
+                         "value":0
                         }]
                 }, 
                 {
@@ -8095,6 +8205,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth 2",
+                         "type":"int",
+                         "value":0
                         }]
                 }, 
                 {
@@ -8158,6 +8273,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth 2",
+                         "type":"int",
+                         "value":0
                         }]
                 }, 
                 {
@@ -8167,6 +8287,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth 2",
+                         "type":"int",
+                         "value":0
                         }]
                 }, 
                 {
@@ -16902,9 +17027,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -16922,9 +17052,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -16987,9 +17122,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",
@@ -17007,9 +17147,14 @@
                          "value":false
                         }, 
                         {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[11]"
                         }, 
                         {
                          "name":"yOrigin",

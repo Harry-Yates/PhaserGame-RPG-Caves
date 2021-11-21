@@ -1,6 +1,6 @@
-import DropItem from "./DropItem.js";
+import MatterEntity from "./MatterEntity.js";
 
-export default class Treasure extends Phaser.Physics.Matter.Sprite {
+export default class Treasure extends MatterEntity {
   static preload(scene) {
     scene.load.atlas("treasure", "./assets/images/treasure/treasure.png", "./assets/images/treasure/treasure_atlas.json");
     scene.load.audio("chest", "./assets/audio/chest.wav");
@@ -11,15 +11,10 @@ export default class Treasure extends Phaser.Physics.Matter.Sprite {
 
   constructor(data) {
     let { scene, treasure } = data;
-    super(scene.matter.world, treasure.x, treasure.y, "treasure", treasure.type);
-    this.scene.add.existing(this);
+    let drops = JSON.parse(treasure.properties.find((p) => p.name == "drops").value);
+    let depth = treasure.properties.find((p) => p.name == "depth").value;
+    super({ scene, x: treasure.x, y: treasure.y, texture: "treasure", frame: treasure.type, drops, depth, health: 1, name: treasure.type });
     let yOrigin = treasure.properties.find((p) => p.name == "yOrigin").value;
-    this.drops = JSON.parse(treasure.properties.find((p) => p.name == "drops").value);
-    this.name = treasure.type;
-    this.health = 1;
-    this.sound = this.scene.sound.add(this.name);
-    this.x += this.width / 2;
-    this.y -= this.height / 2;
     this.y = this.y + this.height * (yOrigin - 0.5);
     const { Bodies } = Phaser.Physics.Matter.Matter;
     var circleCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "collider" });
@@ -27,17 +22,4 @@ export default class Treasure extends Phaser.Physics.Matter.Sprite {
     this.setStatic(true);
     this.setOrigin(0.5, 0.3);
   }
-
-  get dead() {
-    return this.health <= 0;
-  }
-
-  hit = () => {
-    if (this.sound) this.sound.play();
-    this.health--;
-    console.log(`Collected:${this.name} Health:${this.health}`);
-    if (this.dead) {
-      this.drops.forEach((drop) => new DropItem({ scene: this.scene, x: this.x, y: this.y, frame: drop }));
-    }
-  };
 }
