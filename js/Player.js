@@ -12,9 +12,10 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       parts: [playerCollider, playerSensor],
       frictionAir: 0.35,
     });
-    this.createTreasureCollisions(playerSensor);
     this.setExistingBody(compoundBody);
     this.setFixedRotation();
+    this.createTreasureCollisions(playerSensor);
+    this.interactionCollision(playerCollider);
   }
 
   static preload(scene) {
@@ -74,6 +75,25 @@ export default class Player extends Phaser.Physics.Matter.Sprite {
       context: this.scene,
     });
   }
+
+  interactionCollision(playerCollider) {
+    this.scene.matterCollision.addOnCollideStart({
+      objectA: [playerCollider],
+      callback: (other) => {
+        if (other.gameObjectB && other.gameObjectB.pickup) other.gameObjectB.pickup();
+      },
+      context: this.scene,
+    });
+
+    this.scene.matterCollision.addOnCollideActive({
+      objectA: [playerCollider],
+      callback: (other) => {
+        if (other.gameObjectB && other.gameObjectB.pickup) other.gameObjectB.pickup();
+      },
+      context: this.scene,
+    });
+  }
+
   collectTreasure() {
     this.touching = this.touching.filter((gameObject) => gameObject.hit && !gameObject.dead);
     this.touching.forEach((gameobject) => {
