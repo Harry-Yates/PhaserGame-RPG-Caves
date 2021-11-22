@@ -311,8 +311,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":161,
-                 "y":96
+                 "x":96,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -322,14 +322,14 @@
         }, 
         {
          "draworder":"topdown",
-         "id":14,
-         "name":"Portals",
+         "id":16,
+         "name":"Portal",
          "objects":[
                 {
-                 "gid":185,
+                 "gid":963,
                  "height":32,
-                 "id":62,
-                 "name":"",
+                 "id":71,
+                 "name":"smallcave",
                  "properties":[
                         {
                          "name":"collides",
@@ -339,82 +339,18 @@
                         {
                          "name":"portal",
                          "type":"string",
-                         "value":"deathtrapscene"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":256,
-                 "y":96
-                }, 
-                {
-                 "gid":186,
-                 "height":32,
-                 "id":63,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
+                         "value":""
                         }, 
                         {
-                         "name":"portal",
-                         "type":"string",
-                         "value":"deathtrapscene"
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
                         }],
                  "rotation":0,
-                 "type":"",
+                 "type":"smallcave",
                  "visible":true,
                  "width":32,
-                 "x":288,
-                 "y":96
-                }, 
-                {
-                 "gid":185,
-                 "height":32,
-                 "id":64,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"portal",
-                         "type":"string",
-                         "value":"deathtrapscene"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":0,
-                 "y":96
-                }, 
-                {
-                 "gid":186,
-                 "height":32,
-                 "id":65,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"portal",
-                         "type":"string",
-                         "value":"deathtrapscene"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":32,
+                 "x":160,
                  "y":96
                 }],
          "opacity":1,
@@ -423,8 +359,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":15,
- "nextobjectid":71,
+ "nextlayerid":17,
+ "nextobjectid":72,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -9609,10 +9545,21 @@
                  "id":146,
                  "properties":[
                         {
+                         "name":"YOrigin",
+                         "type":"float",
+                         "value":0.5
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
-                        }]
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"string",
+                         "value":""
+                        }],
+                 "type":"smallcave"
                 }, 
                 {
                  "id":147,
