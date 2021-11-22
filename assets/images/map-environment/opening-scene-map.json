@@ -239,12 +239,12 @@
                         {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[59]"
                         }, 
                         {
                          "name":"health",
                          "type":"int",
-                         "value":10
+                         "value":100
                         }],
                  "rotation":180,
                  "type":"",
@@ -267,18 +267,18 @@
                         {
                          "name":"drops",
                          "type":"string",
-                         "value":"[222]"
+                         "value":"[59]"
                         }, 
                         {
                          "name":"health",
                          "type":"int",
-                         "value":1
+                         "value":200
                         }],
                  "rotation":180,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":160,
+                 "x":161,
                  "y":96
                 }],
          "opacity":1,
