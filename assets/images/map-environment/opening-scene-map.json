@@ -213,6 +213,39 @@
                  "width":32,
                  "x":352,
                  "y":128
+                }, 
+                {
+                 "gid":1810,
+                 "height":32,
+                 "id":70,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[11]"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.6
+                        }],
+                 "rotation":0,
+                 "type":"chest",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":288
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -286,9 +319,112 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":14,
+         "name":"Portals",
+         "objects":[
+                {
+                 "gid":185,
+                 "height":32,
+                 "id":62,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"string",
+                         "value":"deathtrapscene"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":256,
+                 "y":96
+                }, 
+                {
+                 "gid":186,
+                 "height":32,
+                 "id":63,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"string",
+                         "value":"deathtrapscene"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":288,
+                 "y":96
+                }, 
+                {
+                 "gid":185,
+                 "height":32,
+                 "id":64,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"string",
+                         "value":"deathtrapscene"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":0,
+                 "y":96
+                }, 
+                {
+                 "gid":186,
+                 "height":32,
+                 "id":65,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"string",
+                         "value":"deathtrapscene"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":13,
- "nextobjectid":57,
+ "nextlayerid":15,
+ "nextobjectid":71,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -1412,7 +1548,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1448,7 +1584,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1495,7 +1631,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1531,7 +1667,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1639,7 +1775,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1653,7 +1789,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1667,7 +1803,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1714,7 +1850,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1822,7 +1958,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1836,7 +1972,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1850,7 +1986,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -1864,7 +2000,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":100
+                         "value":1
                         }]
                 }, 
                 {
@@ -2209,6 +2345,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"string",
+                         "value":"deathtrapscene"
                         }]
                 }, 
                 {
@@ -2218,6 +2359,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"portal",
+                         "type":"string",
+                         "value":"deathtrapscene"
                         }]
                 }, 
                 {
@@ -3067,7 +3213,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {

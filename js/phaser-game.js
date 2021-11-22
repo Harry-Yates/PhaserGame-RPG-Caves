@@ -1,4 +1,5 @@
 import SceneOne from "./SceneOne.js";
+// import DeathTrapScene from "./DeathTrapScene.js";
 
 const config = {
   width: 384,
