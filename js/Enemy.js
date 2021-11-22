@@ -15,8 +15,8 @@ export default class Enemy extends MatterEntity {
     super({ scene, x: enemy.x, y: enemy.y, texture: "enemies", frame: `${enemy.name}_idle_1`, drops, health, name: enemy.name });
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-    var enemyCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "'enemyCollider'" });
-    var enemySensor = Bodies.circle(this.x, this.y, 200, { isSensor: true, label: "enemySensor" });
+    var enemyCollider = Bodies.circle(this.x, this.y, 20, { isSensor: false, label: "'enemyCollider'" });
+    var enemySensor = Bodies.circle(this.x, this.y, 150, { isSensor: true, label: "enemySensor" });
     const compoundBody = Body.create({
       parts: [enemyCollider, enemySensor],
       frictionAir: 0.35,
@@ -57,6 +57,12 @@ export default class Enemy extends MatterEntity {
           this.attacktimer = setInterval(this.attack, 500, this.attacking);
         }
       }
+    }
+    this.setFlipX(this.velocity.x < 0);
+    if (Math.abs(this.velocity.x) > 0.1 || Math.abs(this.velocity.y) > 0.1) {
+      this.anims.play(`${this.name}_walk`, true);
+    } else {
+      this.anims.play(`${this.name}_idle`, true);
     }
   }
 }

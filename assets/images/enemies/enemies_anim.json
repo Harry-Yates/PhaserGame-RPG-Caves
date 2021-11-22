@@ -1,7 +1,7 @@
 {
     "anims": [
         {
-            "key": "trill_walk",
+            "key": "troll_walk",
             "type": "frames",
             "repeat": -1,
             "frameRate": 12,

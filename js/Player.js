@@ -3,7 +3,7 @@ import MatterEntity from "./MatterEntity.js";
 export default class Player extends MatterEntity {
   constructor(data) {
     let { scene, x, y, texture, frame } = data;
-    super({ ...data, health: 2, drops: [], name: "player" });
+    super({ ...data, health: 1, drops: [], name: "player" });
     this.touching = [];
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
@@ -23,10 +23,19 @@ export default class Player extends MatterEntity {
     scene.load.atlas("main_character", "./assets/images/main-character/main_character.png ", "./assets/images/main-character/main_character_atlas.json");
     scene.load.animation("main_character", "./assets/images/main-character/main_character_anim.json");
     scene.load.spritesheet("items", "./assets/images/items/items.png", { frameWidth: 32, frameHeight: 32 });
+    scene.load.image("dead", "./assets/images/items/dead.png", { frameWidth: 32, frameHeight: 32 });
     scene.load.audio("player", "./assets/audio/hit.wav");
   }
 
+  onDeath = () => {
+    this.anims.stop();
+    this.setTexture("dead", 0);
+    // this.setTexture("items", 0);
+    this.setOrigin(0.5);
+  };
+
   update() {
+    if (this.dead) return;
     const speed = 3.5;
     let playerVelocity = new Phaser.Math.Vector2();
     if (this.inputKeys.left.isDown) {
