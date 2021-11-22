@@ -272,7 +272,7 @@
                         {
                          "name":"health",
                          "type":"int",
-                         "value":100
+                         "value":400
                         }],
                  "rotation":180,
                  "type":"",
