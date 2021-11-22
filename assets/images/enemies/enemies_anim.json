@@ -1,0 +1,116 @@
+{
+    "anims": [
+        {
+            "key": "trill_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "enemies",
+                    "frame": "troll_walk_1"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "troll_walk_2"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "troll_walk_3"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "troll_walk_4"
+                }
+            ]
+        },
+        {
+            "key": "troll_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "enemies",
+                    "frame": "troll_idle_1"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "troll_idle_2"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "troll_idle_3"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "troll_idle_4"
+                }
+            ]
+        },
+        {
+            "key": "golem_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "enemies",
+                    "frame": "golem_walk_1"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_walk_2"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_walk_3"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_walk_4"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_walk_5"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_walk_6"
+                }
+            ]
+        },
+        {
+            "key": "golem_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "enemies",
+                    "frame": "golem_idle_1"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_idle_2"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_idle_3"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_idle_4"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_idle_5"
+                },
+                {
+                    "key": "enemies",
+                    "frame": "golem_idle_6"
+                }
+            ]
+        }
+    ]
+}

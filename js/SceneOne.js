@@ -1,13 +1,16 @@
 import Player from "./Player.js";
 import Treasure from "./Treasure.js";
+import Enemy from "./Enemy.js";
 
 export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
+    this.enemies = [];
   }
 
   preload() {
     Player.preload(this);
+    Enemy.preload(this);
     Treasure.preload(this);
     this.load.image("dirt", "./assets/images/map-environment/dirt.png");
     this.load.image("elements", "./assets/images/map-environment/elements.png");
@@ -33,6 +36,7 @@ export default class SceneOne extends Phaser.Scene {
     layer3.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer3);
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
+    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
@@ -44,6 +48,7 @@ export default class SceneOne extends Phaser.Scene {
   }
 
   update() {
+    this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
 }
