@@ -16,7 +16,7 @@ export default class MatterEntity extends Phaser.Physics.Matter.Sprite {
   }
 
   get position() {
-    this_position.set(this.x, this.y);
+    this._position.set(this.x, this.y);
     return this._position;
   }
 
