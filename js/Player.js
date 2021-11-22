@@ -3,7 +3,7 @@ import MatterEntity from "./MatterEntity.js";
 export default class Player extends MatterEntity {
   constructor(data) {
     let { scene, x, y, texture, frame } = data;
-    super({ ...data, health: 1, drops: [], name: "player" });
+    super({ ...data, health: 5, drops: [], name: "player" });
     this.touching = [];
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
