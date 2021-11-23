@@ -23,6 +23,11 @@ export default class SceneOne extends Phaser.Scene {
   create() {
     // this.scale.displaySize.setAspectRatio(width / height);
     // this.scale.refresh();
+    // setTimeout(() => {
+    //   this.scene.start("scene2");
+    // }, 1);
+
+    console.log("hello death trap", this.matter);
     const map = this.make.tilemap({ key: "map" });
     this.map = map;
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
@@ -40,7 +45,6 @@ export default class SceneOne extends Phaser.Scene {
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
-
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
@@ -48,6 +52,18 @@ export default class SceneOne extends Phaser.Scene {
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
+    });
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      console.log("test");
+      if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
+        setTimeout(() => {
+          this.scene.start("scene2");
+        }, 1);
+        console.log("change screen");
+      }
+      console.log(bodyA.label);
+      console.log(bodyB.label);
+      console.log(this.scene);
     });
     // let camera = this.cameras.main;
     // camera.zoom = 1.6;

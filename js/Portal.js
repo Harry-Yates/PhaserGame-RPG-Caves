@@ -13,7 +13,7 @@ export default class Portal extends Phaser.Physics.Matter.Sprite {
     this.y -= this.height / 2;
     this.y = this.y + this.height * (yOrigin - 0.5);
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-    var circleCollider = Bodies.circle(this.x, this.y, 7, { isSensor: false, label: "collider" });
+    var circleCollider = Bodies.circle(this.x, this.y, 1, { isSensor: false, label: "portal" });
     this.setExistingBody(circleCollider);
     this.setStatic(true);
     this.setOrigin(0.5, yOrigin);

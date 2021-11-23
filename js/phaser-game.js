@@ -1,5 +1,5 @@
 import SceneOne from "./SceneOne.js";
-// import DeathTrapScene from "./DeathTrapScene.js";
+import Scene2 from "./Scene2.js";
 
 const config = {
   width: 384,
@@ -7,7 +7,7 @@ const config = {
   backgroundColor: "#333333",
   type: Phaser.AUTO,
   parent: "phaser-game",
-  scene: [SceneOne],
+  scene: [SceneOne, Scene2],
   scale: {
     // mode: Phaser.Scale.FIT,
     zoom: 1.5,
