@@ -567,34 +567,6 @@
                 {
                  "gid":213,
                  "height":32,
-                 "id":108,
-                 "name":"hole",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"portal",
-                         "type":"string",
-                         "value":"deathtrapscene"
-                        }, 
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.5
-                        }],
-                 "rotation":0,
-                 "type":"hole",
-                 "visible":true,
-                 "width":32,
-                 "x":96,
-                 "y":96
-                }, 
-                {
-                 "gid":213,
-                 "height":32,
                  "id":109,
                  "name":"hole",
                  "properties":[
@@ -681,9 +653,43 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":18,
+         "name":"SafePortal",
+         "objects":[
+                {
+                 "gid":3581,
+                 "height":32,
+                 "id":128,
+                 "name":"shole",
+                 "properties":[
+                        {
+                         "name":"safeportal",
+                         "type":"string",
+                         "value":"safe"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "rotation":0,
+                 "type":"hole",
+                 "visible":true,
+                 "width":32,
+                 "x":96,
+                 "y":96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":18,
- "nextobjectid":128,
+ "nextlayerid":19,
+ "nextobjectid":129,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -33557,6 +33563,34 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }]
+                }],
+         "tilewidth":32
+        }, 
+        {
+         "columns":12,
+         "firstgid":3417,
+         "image":"..\/..\/..\/..\/..\/..\/..\/Desktop\/safeportal.png",
+         "imageheight":2048,
+         "imagewidth":384,
+         "margin":0,
+         "name":"safeportal",
+         "spacing":0,
+         "tilecount":768,
+         "tileheight":32,
+         "tiles":[
+                {
+                 "id":164,
+                 "properties":[
+                        {
+                         "name":"safeportal",
+                         "type":"string",
+                         "value":"safe"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
                         }]
                 }],
          "tilewidth":32

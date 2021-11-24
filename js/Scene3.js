@@ -2,7 +2,7 @@ import Player from "./Player.js";
 import Treasure from "./Treasure.js";
 import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
-import SafePortal from "./Portal.js";
+import SafePortal from "./SafePortal.js";
 
 class Scene3 extends Phaser.Scene {
   constructor() {
@@ -48,6 +48,7 @@ class Scene3 extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer3);
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
+    this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 105, y: 490, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
@@ -61,6 +62,11 @@ class Scene3 extends Phaser.Scene {
       console.log("test");
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         this.scene.start("scene2");
+        console.log("change screen");
+      } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
+        setTimeout(() => {
+          this.scene.start("scene2");
+        }, 1);
         console.log("change screen");
       }
       console.log(bodyA.label);
