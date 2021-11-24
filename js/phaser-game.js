@@ -1,5 +1,6 @@
 import SceneOne from "./SceneOne.js";
 import Scene2 from "./Scene2.js";
+import Scene3 from "./Scene3.js";
 
 const config = {
   width: 384,
@@ -7,7 +8,9 @@ const config = {
   backgroundColor: "#333333",
   type: Phaser.AUTO,
   parent: "phaser-game",
-  scene: [SceneOne, Scene2],
+  scene: [SceneOne, Scene2, Scene3],
+  // scene: [SceneOne],
+  // scene: [Scene3],
   scale: {
     // mode: Phaser.Scale.FIT,
     zoom: 1.5,

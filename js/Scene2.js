@@ -10,7 +10,7 @@ class Scene2 extends Phaser.Scene {
   }
   preload() {
     // what assets does the game need
-    console.log("helloxs");
+    console.log("hello Scene 2");
     Player.preload(this);
     Enemy.preload(this);
     Treasure.preload(this);
@@ -64,6 +64,11 @@ class Scene2 extends Phaser.Scene {
       console.log(bodyB.label);
       console.log(this.scene);
     });
+    // let camera = this.cameras.main;
+    // camera.zoom = 1.6;
+    // camera.startFollow(this.player);
+    // camera.setLerp(0.1, 0.1);
+    // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
   }
 
   update() {

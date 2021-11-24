@@ -3,21 +3,22 @@ import Treasure from "./Treasure.js";
 import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
 
-export default class SceneOne extends Phaser.Scene {
+class Scene3 extends Phaser.Scene {
   constructor() {
-    super("SceneOne");
+    super("scene3");
     this.enemies = [];
   }
-
   preload() {
+    // what assets does the game need
+    console.log("hello Scene 3");
     Player.preload(this);
     Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
-    this.load.image("dirt", "./assets/images/map-environment/dirt.png");
-    this.load.image("elements", "./assets/images/map-environment/elements.png");
-    this.load.image("resources", "./assets/images/map-environment/resources.png");
-    this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
+    this.load.image("dirt", "../assets/images/bridgeScene/dirt.png");
+    this.load.image("elements", "./assets/images/bridgeScene/elements.png");
+    this.load.image("resources", "./assets/images/bridgeScene/resources.png");
+    this.load.tilemapTiledJSON("map3", "./assets/images/bridgeScene/opening-scene-map3.json");
   }
 
   create() {
@@ -25,17 +26,18 @@ export default class SceneOne extends Phaser.Scene {
     // this.scale.refresh();
     // setTimeout(() => {
     //   this.scene.start("scene2");
-    // }, 1);
+    // }, 2000);
 
-    console.log("hello death trap", this.matter);
-    const map = this.make.tilemap({ key: "map" });
+    console.log("hello bridge scene", this.matter);
+    const map = this.make.tilemap({ key: "map3" });
     this.map = map;
-    const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
-    const groundObjects = map.addTilesetImage("elements", "elements", 32, 32, 0, 0);
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
-    const layer1 = map.createLayer("Tile Layer 1", groundDirt, 0, 0);
-    const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
+    const dirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
+    const elements = map.addTilesetImage("elements", "elements", 32, 32, 0, 0);
+    const layer1 = map.createLayer("Tile Layer 1", dirt, 0, 0);
+    const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
+
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -45,7 +47,7 @@ export default class SceneOne extends Phaser.Scene {
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
-    this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
+    this.player = new Player({ scene: this, x: 105, y: 490, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -56,12 +58,9 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       console.log("test");
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
-        setTimeout(() => {
-          this.scene.start("scene3");
-        }, 1);
+        this.scene.start("scene2");
         console.log("change screen");
       }
-
       console.log(bodyA.label);
       console.log(bodyB.label);
       console.log(this.scene);
@@ -78,3 +77,5 @@ export default class SceneOne extends Phaser.Scene {
     this.player.update();
   }
 }
+
+export default Scene3;
