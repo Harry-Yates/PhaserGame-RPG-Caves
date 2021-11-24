@@ -21,7 +21,7 @@
          "y":0
         }, 
         {
-         "data":[161, 266, 267, 15, 15, 15, 15, 15, 688, 162, 15, 162, 173, 174, 175, 176, 173, 174, 175, 176, 173, 174, 213, 204, 185, 186, 187, 188, 962, 186, 187, 188, 185, 186, 214, 196, 0, 0, 0, 0, 0, 325, 325, 325, 0, 0, 0, 0, 0, 822, 0, 0, 0, 313, 313, 313, 313, 313, 0, 0, 0, 822, 0, 0, 0, 313, 313, 313, 313, 313, 0, 0, 0, 303, 304, 0, 133, 134, 135, 136, 325, 325, 15, 0, 0, 0, 0, 0, 145, 146, 147, 148, 325, 325, 15, 0, 0, 702, 0, 0, 157, 158, 159, 160, 325, 325, 0, 0, 0, 714, 655, 656, 169, 170, 171, 172, 325, 325, 0, 0, 0, 0, 667, 668, 0, 0, 0, 278, 325, 325, 0, 0, 0, 0, 679, 680, 0, 313, 313, 313, 313, 313, 0, 0, 135, 136, 0, 0, 0, 313, 313, 313, 313, 313, 822, 0, 147, 148, 727, 728, 0, 325, 325, 0, 0, 0, 822, 0, 159, 160, 739, 740, 0, 325, 325, 0, 0, 0, 15, 0, 171, 172, 0, 0, 292, 325, 325, 0, 0, 0, 0, 0],
+         "data":[161, 266, 267, 15, 15, 15, 15, 15, 688, 162, 15, 162, 173, 174, 175, 176, 173, 174, 175, 176, 173, 174, 213, 204, 2017, 2018, 187, 188, 2017, 186, 187, 188, 185, 186, 214, 196, 0, 0, 0, 0, 0, 325, 325, 325, 0, 0, 0, 0, 0, 822, 0, 0, 0, 313, 313, 313, 313, 313, 0, 0, 0, 822, 0, 0, 0, 313, 313, 313, 313, 313, 0, 0, 0, 303, 304, 0, 133, 134, 135, 136, 325, 325, 15, 0, 0, 0, 0, 0, 145, 146, 147, 148, 325, 325, 15, 0, 0, 702, 0, 0, 157, 158, 159, 160, 325, 325, 0, 0, 0, 714, 655, 656, 169, 170, 171, 172, 325, 325, 0, 0, 0, 0, 667, 668, 0, 0, 0, 278, 325, 325, 0, 0, 0, 0, 679, 680, 0, 313, 313, 313, 313, 313, 0, 0, 135, 136, 0, 0, 0, 313, 313, 313, 313, 313, 822, 0, 147, 148, 727, 728, 0, 325, 325, 0, 0, 0, 822, 0, 159, 160, 739, 740, 0, 325, 325, 0, 0, 0, 15, 0, 171, 172, 0, 0, 292, 325, 325, 0, 0, 0, 0, 0],
          "height":16,
          "id":4,
          "name":"Tile Layer 2",
@@ -305,7 +305,7 @@
                         {
                          "name":"health",
                          "type":"int",
-                         "value":400
+                         "value":200
                         }],
                  "rotation":180,
                  "type":"",
@@ -356,62 +356,6 @@
                  "visible":true,
                  "width":32,
                  "x":160,
-                 "y":96
-                }, 
-                {
-                 "gid":2018,
-                 "height":32,
-                 "id":83,
-                 "name":"CR",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"portal",
-                         "type":"string",
-                         "value":"deathtrapscene"
-                        }, 
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.5
-                        }],
-                 "rotation":0,
-                 "type":"caveright",
-                 "visible":true,
-                 "width":32,
-                 "x":32,
-                 "y":96
-                }, 
-                {
-                 "gid":2017,
-                 "height":32,
-                 "id":86,
-                 "name":"CL",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"portal",
-                         "type":"string",
-                         "value":"deathtrapscene"
-                        }, 
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.5
-                        }],
-                 "rotation":0,
-                 "type":"caveleft",
-                 "visible":true,
-                 "width":32,
-                 "x":0,
                  "y":96
                 }, 
                 {
@@ -503,9 +447,66 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":17,
+         "name":"SafePortal",
+         "objects":[
+                {
+                 "gid":2785,
+                 "height":32,
+                 "id":98,
+                 "name":"SCL",
+                 "properties":[
+                        {
+                         "name":"safeportal",
+                         "type":"string",
+                         "value":"safe"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "rotation":0,
+                 "type":"caveleft",
+                 "visible":true,
+                 "width":32,
+                 "x":0,
+                 "y":96
+                }, 
+                {
+                 "gid":2786,
+                 "height":32,
+                 "id":109,
+                 "name":"SCR",
+                 "properties":[
+                        {
+                         "name":"safeportal",
+                         "type":"string",
+                         "value":"safe"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "rotation":0,
+                 "type":"caveright",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":17,
- "nextobjectid":98,
+ "nextlayerid":18,
+ "nextobjectid":112,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -25647,6 +25648,65 @@
                          "type":"bool",
                          "value":true
                         }]
+                }],
+         "tilewidth":32
+        }, 
+        {
+         "columns":12,
+         "firstgid":2649,
+         "image":"..\/..\/..\/..\/..\/..\/..\/Desktop\/safeportal.png",
+         "imageheight":2048,
+         "imagewidth":384,
+         "margin":0,
+         "name":"safeportal",
+         "spacing":0,
+         "tilecount":768,
+         "tileheight":32,
+         "tiles":[
+                {
+                 "id":136,
+                 "properties":[
+                        {
+                         "name":"safeportal",
+                         "type":"string",
+                         "value":"safe"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "type":"caveleft"
+                }, 
+                {
+                 "id":137,
+                 "properties":[
+                        {
+                         "name":"safeportal",
+                         "type":"string",
+                         "value":"safe"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "type":"caveright"
+                }, 
+                {
+                 "id":164,
+                 "properties":[
+                        {
+                         "name":"safeportal",
+                         "type":"string",
+                         "value":"safe"
+                        }, 
+                        {
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.5
+                        }],
+                 "type":"hole"
                 }],
          "tilewidth":32
         }],

@@ -2,6 +2,7 @@ import Player from "./Player.js";
 import Treasure from "./Treasure.js";
 import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
+import SafePortal from "./SafePortal.js";
 
 class Scene2 extends Phaser.Scene {
   constructor() {
@@ -15,6 +16,7 @@ class Scene2 extends Phaser.Scene {
     Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
+    SafePortal.preload(this);
     this.load.image("dirt", "../assets/images/DeathTrapScene/dirt.png");
     this.load.image("elements", "./assets/images/DeathTrapScene/elements.png");
     this.load.image("resources", "./assets/images/DeathTrapScene/resources.png");

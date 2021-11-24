@@ -2,6 +2,7 @@ import Player from "./Player.js";
 import Treasure from "./Treasure.js";
 import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
+import SafePortal from "./SafePortal.js";
 
 export default class SceneOne extends Phaser.Scene {
   constructor() {
@@ -14,6 +15,7 @@ export default class SceneOne extends Phaser.Scene {
     Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
+    SafePortal.preload(this);
     this.load.image("dirt", "./assets/images/map-environment/dirt.png");
     this.load.image("elements", "./assets/images/map-environment/elements.png");
     this.load.image("resources", "./assets/images/map-environment/resources.png");
@@ -44,6 +46,7 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer3);
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
+    this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
@@ -56,6 +59,11 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       console.log("test");
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
+        setTimeout(() => {
+          this.scene.start("scene2");
+        }, 1);
+        console.log("change screen");
+      } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
           this.scene.start("scene3");
         }, 1);
