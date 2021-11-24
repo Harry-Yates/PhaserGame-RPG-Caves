@@ -3,6 +3,7 @@ import Treasure from "./Treasure.js";
 import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
+import Angel from "./Angel.js";
 
 class Scene3 extends Phaser.Scene {
   constructor() {
@@ -17,6 +18,7 @@ class Scene3 extends Phaser.Scene {
     Treasure.preload(this);
     Portal.preload(this);
     SafePortal.preload(this);
+    Angel.preload(this);
     this.load.image("dirt", "../assets/images/bridgeScene/dirt.png");
     this.load.image("elements", "./assets/images/bridgeScene/elements.png");
     this.load.image("resources", "./assets/images/bridgeScene/resources.png");
@@ -49,6 +51,7 @@ class Scene3 extends Phaser.Scene {
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
+    this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
     this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 105, y: 490, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
@@ -68,7 +71,13 @@ class Scene3 extends Phaser.Scene {
           this.scene.start("scene2");
         }, 1);
         console.log("change screen");
+      } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
+        setTimeout(() => {
+          console.log("An Angel was eeer");
+        }, 1);
+        console.log("An Angel!");
       }
+
       console.log(bodyA.label);
       console.log(bodyB.label);
       console.log(this.scene);
