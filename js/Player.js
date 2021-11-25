@@ -72,7 +72,7 @@ export default class Player extends MatterEntity {
       callback: (other) => {
         if (other.bodyB.isSensor) return;
         this.touching.push(other.gameObjectB);
-        console.log(this.touching.length, other.gameObjectB.name);
+        // console.log(this.touching.length, other.gameObjectB.name);
       },
       context: this.scene,
     });
@@ -81,7 +81,7 @@ export default class Player extends MatterEntity {
       objectA: [playerSensor],
       callback: (other) => {
         this.touching = this.touching.filter((gameObject) => gameObject != other.gameObjectB);
-        console.log(this.touching.length);
+        // console.log(this.touching.length);
       },
       context: this.scene,
     });
