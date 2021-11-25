@@ -31,6 +31,7 @@ export default class MatterEntity extends Phaser.Physics.Matter.Sprite {
   onDeath = () => {
     this.anims.stop();
     this.setTexture("dead", 0);
+
     // this.setTexture("items", 0);
     this.setOrigin(0.5);
   };
