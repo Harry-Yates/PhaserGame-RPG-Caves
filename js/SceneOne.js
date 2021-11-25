@@ -72,9 +72,7 @@ export default class SceneOne extends Phaser.Scene {
         }, 1);
         console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-        setTimeout(() => {
-          console.log("An Angel was eeer");
-        }, 1);
+        setTimeout(() => {}, 1);
         console.log("An Angel!");
       }
       console.log(bodyA.label);
