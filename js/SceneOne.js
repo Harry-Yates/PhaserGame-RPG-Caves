@@ -7,7 +7,6 @@ import Angel from "./Angel.js";
 
 let textbubble, content;
 export default class SceneOne extends Phaser.Scene {
-  
   constructor() {
     super("SceneOne");
     this.enemies = [];
@@ -25,9 +24,8 @@ export default class SceneOne extends Phaser.Scene {
     this.load.image("resources", "./assets/images/map-environment/resources.png");
     this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
     // text box
-    this.load.image('textBubble', '../assets/images/textbubble.png');
+    this.load.image("textBubble", "../assets/images/textbubble.png");
   }
-
 
   create() {
     // this.scale.displaySize.setAspectRatio(width / height);
@@ -77,37 +75,31 @@ export default class SceneOne extends Phaser.Scene {
         }, 1);
         console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-
         setTimeout(() => {
           console.log("An Angel was eeer");
         }, 1);
         console.log("An Angel!");
 
-        content = [
-          "left cave"    
-        ];
-        textbubble = this.add.image(300, 340, 'textBubble').setOrigin(0);
+        content = ["left cave"];
+        textbubble = this.add.image(300, 340, "textBubble").setOrigin(0);
         textbubble.setScale(0.08);
-        this.add.text(300, 335, content, { fontFamily: 'Arial', fontSize: 15, padding: 10, color: '#333', wordWrap: { width: 70 } }).setOrigin(0);
+        this.add.text(300, 335, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
 
-        
-    //   const exitBtn = this.input.keyboard.addKey('UP');  // Get key object
-    //   this.input.keyboard.on('keydown-' + 'UP', function(event ) { 
-    //     if(exitBtn.isDown){
-    //       console.log("UP is pressed");    
-    //   }
-    // });
+        //   const exitBtn = this.input.keyboard.addKey('UP');  // Get key object
+        //   this.input.keyboard.on('keydown-' + 'UP', function(event ) {
+        //     if(exitBtn.isDown){
+        //       console.log("UP is pressed");
+        //   }
+        // });
       }
 
-      
-
       // on tab exit text box
-    
+
       // console.log(bodyA.label);
       // console.log(bodyB.label);
       // console.log(this.scene);
     });
-    
+
     // let camera = this.cameras.main;
     // camera.zoom = 1.6;
     // camera.startFollow(this.player);
@@ -116,8 +108,8 @@ export default class SceneOne extends Phaser.Scene {
   }
 
   update() {
+    this.sound.get("title_music").stop();
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
- 
   }
 }
