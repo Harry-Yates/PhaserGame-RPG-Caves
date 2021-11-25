@@ -1,3 +1,4 @@
+import MenuScene from "./MenuScene.js";
 import SceneOne from "./SceneOne.js";
 import Scene2 from "./Scene2.js";
 import Scene3 from "./Scene3.js";
@@ -20,7 +21,7 @@ const config = {
   physics: {
     default: "matter",
     matter: {
-      // debug: true,
+      debug: true,
       gravity: { y: 0 },
     },
   },
