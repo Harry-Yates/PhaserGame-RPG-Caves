@@ -24,7 +24,7 @@ export default class SceneOne extends Phaser.Scene {
     this.load.image("resources", "./assets/images/map-environment/resources.png");
     this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
     // text box
-    this.load.image("textBubble", "../assets/images/textbubble.png");
+    this.load.image("textBubble", "./assets/images/textbubble.png");
   }
 
   create() {
