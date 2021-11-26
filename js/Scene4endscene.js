@@ -19,10 +19,11 @@ class Scene4endscene extends Phaser.Scene {
     Portal.preload(this);
     SafePortal.preload(this);
     Angel.preload(this);
-    this.load.image("dirt", "../assets/images/endScene/dirt.png");
+    this.load.image("dirt", "./assets/images/endScene/dirt.png");
     this.load.image("elements", "./assets/images/endScene/elements.png");
     this.load.image("resources", "./assets/images/endScene/resources.png");
     this.load.tilemapTiledJSON("end-scene", "./assets/images/endScene/end-scene.json");
+    this.load.image("textBubble", "./assets/images/textbubble.png");
   }
 
   create() {
@@ -75,7 +76,7 @@ class Scene4endscene extends Phaser.Scene {
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
         console.log("An Angel!");
 
-        content = ["    Go forth!"];
+        content = ["   Go forth!"];
         angelSound.play();
         textbubble = this.add.image(110, 220, "textBubble").setOrigin(0);
         textbubble.setScale(0.11);
