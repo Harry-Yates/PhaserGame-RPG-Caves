@@ -35,7 +35,7 @@ export default class Player extends MatterEntity {
       this.setOrigin(0.5);
       this.anims.stop();
       this.destroy();
-    }, 600);
+    }, 800);
   };
 
   // setTimeout(() => {
