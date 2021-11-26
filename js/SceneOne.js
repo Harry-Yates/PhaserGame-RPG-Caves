@@ -63,7 +63,6 @@ export default class SceneOne extends Phaser.Scene {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      // console.log("test");
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
           this.scene.start("scene2");
@@ -75,15 +74,13 @@ export default class SceneOne extends Phaser.Scene {
         }, 1);
         console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-        setTimeout(() => {
-          console.log("An Angel was eeer");
-        }, 1);
-        console.log("An Angel!");
 
         content = ["left cave"];
         textbubble = this.add.image(300, 340, "textBubble").setOrigin(0);
         textbubble.setScale(0.08);
         this.add.text(300, 335, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
+
+        
 
         //   const exitBtn = this.input.keyboard.addKey('UP');  // Get key object
         //   this.input.keyboard.on('keydown-' + 'UP', function(event ) {
@@ -92,8 +89,6 @@ export default class SceneOne extends Phaser.Scene {
         //   }
         // });
       }
-
-      // on tab exit text box
 
       // console.log(bodyA.label);
       // console.log(bodyB.label);
