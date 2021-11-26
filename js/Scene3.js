@@ -76,12 +76,11 @@ class Scene3 extends Phaser.Scene {
         setTimeout(() => {
           console.log("An Angel was eeer");
         }, 1);
-        console.log("An Angel!");
-        content = ["  Number 3"];
+        // console.log("An Angel!");
         angelSound.play();
         textbubble = this.add.image(260, 10, "textBubble").setOrigin(0);
-        textbubble.setScale(0.11);
-        this.add.text(260, 10, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
+        textbubble.setScale(0.095);
+        content = this.add.text(260, 10, "Third hole", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
       }
 
       // console.log(bodyA.label);
@@ -93,6 +92,13 @@ class Scene3 extends Phaser.Scene {
     // camera.startFollow(this.player);
     // camera.setLerp(0.1, 0.1);
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
+    this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
+      if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
+        // console.log("Bye Angel!");
+        textbubble.destroy();
+        content.destroy();
+      }
+    });
   }
 
   update() {

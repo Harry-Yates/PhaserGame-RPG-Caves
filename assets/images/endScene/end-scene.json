@@ -285,8 +285,8 @@
                  "type":"coins",
                  "visible":true,
                  "width":32,
-                 "x":160,
-                 "y":224
+                 "x":224,
+                 "y":320
                 }, 
                 {
                  "gid":1043,
@@ -385,7 +385,7 @@
                  "visible":true,
                  "width":32,
                  "x":192,
-                 "y":224
+                 "y":416
                 }, 
                 {
                  "gid":1043,
@@ -417,8 +417,8 @@
                  "type":"coins",
                  "visible":true,
                  "width":32,
-                 "x":128,
-                 "y":224
+                 "x":224,
+                 "y":192
                 }, 
                 {
                  "gid":1043,
@@ -434,7 +434,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":1
+                         "value":0
                         }, 
                         {
                          "name":"drops",
@@ -450,8 +450,8 @@
                  "type":"coins",
                  "visible":true,
                  "width":32,
-                 "x":160,
-                 "y":256
+                 "x":224,
+                 "y":352
                 }, 
                 {
                  "gid":1042,

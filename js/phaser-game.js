@@ -12,9 +12,9 @@ const config = {
   parent: "phaser-game",
   scene: [MenuScene, SceneOne, Scene2, Scene3, Scene4endscene],
   // scene: [SceneOne],
-  // scene: [Scene3],
   // scene: [Scene2],
-  scene: [Scene4endscene],
+  // scene: [Scene3],
+  // scene: [Scene4endscene],
   scale: {
     // mode: Phaser.Scale.FIT,
     zoom: 1.5,

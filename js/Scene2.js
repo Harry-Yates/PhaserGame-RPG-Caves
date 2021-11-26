@@ -4,6 +4,7 @@ import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 
+let textbubble, content;
 class Scene2 extends Phaser.Scene {
   constructor() {
     super("scene2");
@@ -39,7 +40,6 @@ class Scene2 extends Phaser.Scene {
     const layer1 = map.createLayer("Tile Layer 1", resources, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
-    let angelSound = this.sound.add("angelSound");
 
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
@@ -61,11 +61,11 @@ class Scene2 extends Phaser.Scene {
       console.log("test");
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         this.scene.start("DeathTrapScene");
-        console.log("change screen");
+        // console.log("change screen");
       }
-      console.log(bodyA.label);
-      console.log(bodyB.label);
-      console.log(this.scene);
+      // console.log(bodyA.label);
+      // console.log(bodyB.label);
+      // console.log(this.scene);
     });
     // let camera = this.cameras.main;
     // camera.zoom = 1.6;

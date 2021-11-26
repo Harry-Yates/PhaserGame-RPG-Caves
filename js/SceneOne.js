@@ -69,25 +69,17 @@ export default class SceneOne extends Phaser.Scene {
         setTimeout(() => {
           this.scene.start("scene2");
         }, 1);
-        console.log("change screen");
+        // console.log("change screen");
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
           this.scene.start("scene3");
         }, 1);
-        console.log("change screen");
+        // console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-        content = ["left cave"];
         angelSound.play();
-        textbubble = this.add.image(300, 340, "textBubble").setOrigin(0);
-        textbubble.setScale(0.08);
-        this.add.text(300, 335, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
-
-        //   const exitBtn = this.input.keyboard.addKey('UP');  // Get key object
-        //   this.input.keyboard.on('keydown-' + 'UP', function(event ) {
-        //     if(exitBtn.isDown){
-        //       console.log("UP is pressed");
-        //   }
-        // });
+        textbubble = this.add.image(280, 320, "textBubble").setOrigin(0);
+        textbubble.setScale(0.09);
+        content = this.add.text(280, 318, "Left cave", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
       }
 
       // console.log(bodyA.label);
@@ -100,6 +92,13 @@ export default class SceneOne extends Phaser.Scene {
     // camera.startFollow(this.player);
     // camera.setLerp(0.1, 0.1);
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
+    this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
+      if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
+        // console.log("Bye Angel!");
+        textbubble.destroy();
+        content.destroy();
+      }
+    });
   }
 
   update() {

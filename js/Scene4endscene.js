@@ -74,24 +74,25 @@ class Scene4endscene extends Phaser.Scene {
           this.scene.start("scene2");
         }, 1);
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-        console.log("An Angel!");
-
-        content = ["   Go forth!"];
+        // console.log("An Angel!");
         angelSound.play();
-        textbubble = this.add.image(110, 220, "textBubble").setOrigin(0);
-        textbubble.setScale(0.11);
-        this.add.text(110, 220, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
+        textbubble = this.add.image(115, 220, "textBubble").setOrigin(0);
+        textbubble.setScale(0.095);
+        content = this.add.text(106, 218, "   Go forth!", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
       }
-
-      // console.log(bodyA.label);
-      // console.log(bodyB.label);
-      // console.log(this.scene);
     });
     // let camera = this.cameras.main;
     // camera.zoom = 1.6;
     // camera.startFollow(this.player);
     // camera.setLerp(0.1, 0.1);
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
+    this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
+      if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
+        // console.log("Bye Angel!");
+        textbubble.destroy();
+        content.destroy();
+      }
+    });
   }
 
   update() {
