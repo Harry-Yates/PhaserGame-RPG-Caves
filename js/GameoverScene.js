@@ -35,6 +35,7 @@ class GameoverScene extends Phaser.Scene {
       this.registry.destroy(); // destroy registry
       this.events.off(); // disable all active events
       this.scene.start("MenuScene");
+      this.sound.get("gameover").stop();
     }
   }
 }

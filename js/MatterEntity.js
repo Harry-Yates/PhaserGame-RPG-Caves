@@ -16,11 +16,22 @@ export default class MatterEntity extends Phaser.Physics.Matter.Sprite {
   }
 
   get position() {
+    if (this.dead) {
+      return this._position.set(0, 0);
+    }
+    console.log(this.health);
+
+    // if (this.health == 0) {
+    //   return null;
+    // }
     this._position.set(this.x, this.y);
     return this._position;
   }
 
   get velocity() {
+    if (!this.body) {
+      return null;
+    }
     return this.body.velocity;
   }
 
@@ -29,17 +40,15 @@ export default class MatterEntity extends Phaser.Physics.Matter.Sprite {
   }
 
   onDeath = () => {
-    this.anims.stop();
     this.setTexture("dead", 0);
-
-    // this.setTexture("items", 0);
     this.setOrigin(0.5);
+    this.anims.stop();
   };
 
   hit = () => {
     if (this.sound) this.sound.play();
     this.health--;
-    // console.log(`Collected:${this.name} Health:${this.health}`);
+    console.log(`Collected:${this.name} Health:${this.health}`);
     if (this.dead) {
       this.onDeath();
       this.drops.forEach((drop) => new DropItem({ scene: this.scene, x: this.x, y: this.y, frame: drop }));
