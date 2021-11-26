@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"..\/endScene\/opening-scene-map.json"
+        }
+    },
  "height":16,
  "infinite":false,
  "layers":[
@@ -64,6 +72,11 @@
                          "name":"collides",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"string",
+                         "value":"2"
                         }, 
                         {
                          "name":"yOrigin",

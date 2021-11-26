@@ -42,6 +42,7 @@ class Scene4endscene extends Phaser.Scene {
     const layer1 = map.createLayer("Tile Layer 1", resources, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
+    let angelSound = this.sound.add("angelSound");
 
     layer0.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer0);
@@ -65,19 +66,17 @@ class Scene4endscene extends Phaser.Scene {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         this.scene.start("scene2");
-      
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
           this.scene.start("scene2");
         }, 1);
-
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
         console.log("An Angel!");
 
-        content = ["test 123"];
+        content = ["    Go forth!"];
+        angelSound.play();
         textbubble = this.add.image(110, 220, "textBubble").setOrigin(0);
         textbubble.setScale(0.11);
         this.add.text(110, 220, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
