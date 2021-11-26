@@ -5,6 +5,7 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
+let textbubble, content;
 class Scene4endscene extends Phaser.Scene {
   constructor() {
     super("scene4endscene");
@@ -12,7 +13,6 @@ class Scene4endscene extends Phaser.Scene {
   }
   preload() {
     // what assets does the game need
-    console.log("hello Scene4endscene");
     Player.preload(this);
     Enemy.preload(this);
     Treasure.preload(this);
@@ -65,25 +65,27 @@ class Scene4endscene extends Phaser.Scene {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      console.log("test");
+      
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         this.scene.start("scene2");
-        console.log("change screen");
+      
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
           this.scene.start("scene2");
         }, 1);
-        console.log("change screen");
+
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-        setTimeout(() => {
-          console.log("An Angel was eeer");
-        }, 1);
         console.log("An Angel!");
+
+        content = ["test 123"];
+        textbubble = this.add.image(110, 220, "textBubble").setOrigin(0);
+        textbubble.setScale(0.11);
+        this.add.text(110, 220, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
       }
 
-      console.log(bodyA.label);
-      console.log(bodyB.label);
-      console.log(this.scene);
+      // console.log(bodyA.label);
+      // console.log(bodyB.label);
+      // console.log(this.scene);
     });
     // let camera = this.cameras.main;
     // camera.zoom = 1.6;

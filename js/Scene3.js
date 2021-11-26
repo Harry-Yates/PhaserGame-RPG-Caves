@@ -5,6 +5,7 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
+let textbubble, content;
 class Scene3 extends Phaser.Scene {
   constructor() {
     super("scene3");
@@ -23,6 +24,7 @@ class Scene3 extends Phaser.Scene {
     this.load.image("elements", "./assets/images/bridgeScene/elements.png");
     this.load.image("resources", "./assets/images/bridgeScene/resources.png");
     this.load.tilemapTiledJSON("map3", "./assets/images/bridgeScene/opening-scene-map3.json");
+    this.load.image("textBubble", "./assets/images/textbubble.png");
   }
 
   create() {
@@ -62,10 +64,10 @@ class Scene3 extends Phaser.Scene {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      console.log("test");
+
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         this.scene.start("scene2");
-        console.log("change screen");
+       
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
           this.scene.start("scene4endscene");
@@ -76,11 +78,15 @@ class Scene3 extends Phaser.Scene {
           console.log("An Angel was eeer");
         }, 1);
         console.log("An Angel!");
+        content = ["left: 3rd hole"];
+        textbubble = this.add.image(260, 10, "textBubble").setOrigin(0);
+        textbubble.setScale(0.11);
+        this.add.text(260, 10, content, { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
       }
 
-      console.log(bodyA.label);
-      console.log(bodyB.label);
-      console.log(this.scene);
+      // console.log(bodyA.label);
+      // console.log(bodyB.label);
+      // console.log(this.scene);
     });
     // let camera = this.cameras.main;
     // camera.zoom = 1.6;
