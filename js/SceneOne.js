@@ -5,7 +5,6 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
-
 export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
@@ -82,7 +81,6 @@ export default class SceneOne extends Phaser.Scene {
         this.textbubble.setScale(0.09);
         this.content = this.add.text(280, 318, "Left cave", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
       }
-
     });
 
     // let camera = this.cameras.main;
@@ -92,13 +90,12 @@ export default class SceneOne extends Phaser.Scene {
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
     this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
       if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-      
         this.textbubble.destroy();
         this.content.destroy();
       }
     });
 
-    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '25px', fill: '#fff' });
+    this.scoreText = this.add.text(16, 16, "score: 0", { fontSize: "25px", fill: "#fff" });
   }
 
   update() {
