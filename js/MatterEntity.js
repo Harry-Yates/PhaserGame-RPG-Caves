@@ -39,7 +39,7 @@ export default class MatterEntity extends Phaser.Physics.Matter.Sprite {
   hit = () => {
     if (this.sound) this.sound.play();
     this.health--;
-    console.log(`Collected:${this.name} Health:${this.health}`);
+    // console.log(`Collected:${this.name} Health:${this.health}`);
     if (this.dead) {
       this.onDeath();
       this.drops.forEach((drop) => new DropItem({ scene: this.scene, x: this.x, y: this.y, frame: drop }));

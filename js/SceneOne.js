@@ -5,11 +5,12 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
-let textbubble, content;
+
 export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
     this.enemies = [];
+    this.textbubble, this.content;
   }
 
   preload() {
@@ -77,14 +78,11 @@ export default class SceneOne extends Phaser.Scene {
         // console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
         angelSound.play();
-        textbubble = this.add.image(280, 320, "textBubble").setOrigin(0);
-        textbubble.setScale(0.09);
-        content = this.add.text(280, 318, "Left cave", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
+        this.textbubble = this.add.image(280, 320, "textBubble").setOrigin(0);
+        this.textbubble.setScale(0.09);
+        this.content = this.add.text(280, 318, "Left cave", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
       }
 
-      // console.log(bodyA.label);
-      // console.log(bodyB.label);
-      // console.log(this.scene);
     });
 
     // let camera = this.cameras.main;
@@ -94,11 +92,13 @@ export default class SceneOne extends Phaser.Scene {
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
     this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
       if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-        // console.log("Bye Angel!");
-        textbubble.destroy();
-        content.destroy();
+      
+        this.textbubble.destroy();
+        this.content.destroy();
       }
     });
+
+    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '25px', fill: '#fff' });
   }
 
   update() {

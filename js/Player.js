@@ -5,6 +5,8 @@ export default class Player extends MatterEntity {
     let { scene, x, y, texture, frame } = data;
     super({ ...data, health: 1, drops: [], name: "player" });
     this.touching = [];
+    this.score = 0;
+
 
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     var playerCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "'playerCollider'" });
@@ -29,6 +31,7 @@ export default class Player extends MatterEntity {
   }
 
   onDeath = () => {
+    console.log(this);
     this.anims.stop();
     this.setTexture("dead", 0);
     // this.setTexture("items", 0);
@@ -106,11 +109,15 @@ export default class Player extends MatterEntity {
     });
   }
 
-  collectTreasure() {
+  collectTreasure(scene) {
+    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '25px', fill: '#fff' });
     this.touching = this.touching.filter((gameObject) => gameObject.hit && !gameObject.dead);
     this.touching.forEach((gameobject) => {
       gameobject.hit();
       if (gameobject.dead) gameobject.destroy();
     });
+
+    // scene.score += 10;
+    // scene.scoreText.setText('Score: ' + score);
   }
 }

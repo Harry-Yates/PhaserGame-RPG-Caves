@@ -5,11 +5,12 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
-let textbubble, content;
+
 class Scene3 extends Phaser.Scene {
   constructor() {
     super("scene3");
     this.enemies = [];
+    this.textbubble, this.content;
   }
   preload() {
     // what assets does the game need
@@ -78,9 +79,9 @@ class Scene3 extends Phaser.Scene {
         }, 1);
         // console.log("An Angel!");
         angelSound.play();
-        textbubble = this.add.image(260, 10, "textBubble").setOrigin(0);
-        textbubble.setScale(0.095);
-        content = this.add.text(260, 10, "Third hole", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
+        this.textbubble = this.add.image(260, 10, "textBubble").setOrigin(0);
+        this.textbubble.setScale(0.095);
+        this.content = this.add.text(260, 10, "Third hole", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
       }
 
       // console.log(bodyA.label);
@@ -95,8 +96,8 @@ class Scene3 extends Phaser.Scene {
     this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
       if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
         // console.log("Bye Angel!");
-        textbubble.destroy();
-        content.destroy();
+        this.textbubble.destroy();
+        this.content.destroy();
       }
     });
   }

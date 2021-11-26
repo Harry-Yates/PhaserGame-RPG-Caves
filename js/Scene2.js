@@ -4,7 +4,6 @@ import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 
-let textbubble, content;
 class Scene2 extends Phaser.Scene {
   constructor() {
     super("scene2");
@@ -31,7 +30,7 @@ class Scene2 extends Phaser.Scene {
     //   this.scene.start("scene2");
     // }, 2000);
 
-    console.log("hello death trap", this.matter);
+    // console.log("hello death trap", this.matter);
     const map = this.make.tilemap({ key: "map2" });
     this.map = map;
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
@@ -58,10 +57,9 @@ class Scene2 extends Phaser.Scene {
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      console.log("test");
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         this.scene.start("DeathTrapScene");
-        // console.log("change screen");
+       
       }
       // console.log(bodyA.label);
       // console.log(bodyB.label);
