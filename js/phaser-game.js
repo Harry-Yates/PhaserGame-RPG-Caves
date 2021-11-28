@@ -23,7 +23,7 @@ const config = {
   physics: {
     default: "matter",
     matter: {
-      debug: false,
+      debug: true,
       gravity: { y: 0 },
     },
   },

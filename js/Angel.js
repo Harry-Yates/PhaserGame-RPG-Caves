@@ -7,7 +7,6 @@ export default class Angel extends Phaser.Physics.Matter.Sprite {
 
   constructor(data) {
     let { scene, angel } = data;
-    // console.log(angel);
     super(scene.matter.world, angel.x, angel.y, "angel", angel.type);
     this.scene.add.existing(this);
     let yOrigin = angel.properties.find((p) => p.name == "yOrigin").value;
@@ -15,7 +14,7 @@ export default class Angel extends Phaser.Physics.Matter.Sprite {
     this.y -= this.height / 2;
     this.y = this.y + this.height * (yOrigin - 0.5);
     const { Bodies } = Phaser.Physics.Matter.Matter;
-    var circleCollider = Bodies.circle(this.x, this.y, 9, { isSensor: false, label: "angel.this" });
+    var circleCollider = Bodies.circle(this.x, this.y, 9, { isSensor: false, label: "angel" });
     this.setExistingBody(circleCollider);
     this.setStatic(true);
     this.setOrigin(0.5, 0.9, yOrigin);

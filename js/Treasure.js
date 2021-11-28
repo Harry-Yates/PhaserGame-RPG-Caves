@@ -11,7 +11,6 @@ export default class Treasure extends MatterEntity {
 
   constructor(data) {
     let { scene, treasure } = data;
-    // console.log(treasure);
     let drops = JSON.parse(treasure.properties.find((p) => p.name == "drops").value);
     let depth = treasure.properties.find((p) => p.name == "depth").value;
     super({ scene, x: treasure.x, y: treasure.y, texture: "treasure", frame: treasure.type, drops, depth, health: 1, name: treasure.type });
