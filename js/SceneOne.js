@@ -8,13 +8,14 @@ import Angel from "./Angel.js";
 export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
-    this.enemies = [];
-    this.textbubble, this.content;
+    // this.enemies = [];
+    this.textbubble, this.content, this.updateScore;
+   
   }
 
   preload() {
     Player.preload(this);
-    Enemy.preload(this);
+    // Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
     SafePortal.preload(this);
@@ -55,7 +56,7 @@ export default class SceneOne extends Phaser.Scene {
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
-    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
+    // this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
@@ -67,12 +68,13 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene2", { score: this.score });
+          this.scene.start("scene2", { score: score });
         }, 1);
         // console.log("change screen");
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene3", { score: this.score });
+          this.scene.start("scene3", { score: score });
+          console.log(score);
         }, 1);
         // console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
@@ -94,19 +96,34 @@ export default class SceneOne extends Phaser.Scene {
         this.content.destroy();
       }
     });
+    // this.updateScore(score);
+
+    this.scoreText = this.add.text(10, 5, `score: ${score}`, { fontSize: "20px", fill: "#fff" });
 
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
         score += 10;
-        this.scoreText.setText("score: " + score);
+        this.scoreText.setText(`score: ${score}`);
       }
     });
 
-    this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
+
   }
 
+  // updateScore(score){
+  //   this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+  //     if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
+  //       score += 10;
+  //       this.scoreText.setText("score: " + score);
+  //     }
+  //   });
+    
+
+  //   this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
+  // }
+
   update() {
-    this.enemies.forEach((enemy) => enemy.update());
+    // this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
 }

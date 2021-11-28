@@ -5,17 +5,24 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
+
 class Scene3 extends Phaser.Scene {
   constructor() {
     super("scene3");
-    this.enemies = [];
-    this.textbubble, this.content;
+    // this.enemies = [];
+    this.textbubble, this.content, this.score;
+  }
+  init(data){
+    // console.log('init', data);
+    this.score = data.score;
+    // this.updateScore = data.updateScore;
+    console.log(this.score);
   }
   preload() {
     // what assets does the game need
     console.log("hello Scene 3");
     Player.preload(this);
-    Enemy.preload(this);
+    // Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
     SafePortal.preload(this);
@@ -25,6 +32,8 @@ class Scene3 extends Phaser.Scene {
     this.load.image("resources", "./assets/images/bridgeScene/resources.png");
     this.load.tilemapTiledJSON("map3", "./assets/images/bridgeScene/opening-scene-map3.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
+
+    
   }
 
   create() {
@@ -34,7 +43,7 @@ class Scene3 extends Phaser.Scene {
     //   this.scene.start("scene2");
     // }, 2000);
 
-    console.log("hello bridge scene", this.matter);
+    // console.log("hello bridge scene", this.matter);
     const map = this.make.tilemap({ key: "map3" });
     this.map = map;
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
@@ -45,6 +54,10 @@ class Scene3 extends Phaser.Scene {
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
 
+    //add score
+    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
+    console.log(this.score);
+    
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -55,7 +68,7 @@ class Scene3 extends Phaser.Scene {
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
-    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
+    // this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 105, y: 490, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
@@ -98,12 +111,26 @@ class Scene3 extends Phaser.Scene {
         this.textbubble.destroy();
         this.content.destroy();
       }
+    
+    
+    // update score on collision
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
+        this.score += 10;
+        this.scoreText.setText(`score: ${this.score}`);
+        console.log(this.score);
+      }
+    });
+
+    
+    
     });
   }
 
   update() {
-    this.enemies.forEach((enemy) => enemy.update());
+    // this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
+    
   }
 }
 
