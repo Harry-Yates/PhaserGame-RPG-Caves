@@ -44,8 +44,8 @@ export default class SceneOne extends Phaser.Scene {
     const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
-    var score = 0;
-    var scoreText;
+    let score = 0;
+
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
