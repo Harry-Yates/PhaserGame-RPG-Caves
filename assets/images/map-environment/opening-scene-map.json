@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"..\/endScene\/opening-scene-map.json"
-        }
-    },
  "height":16,
  "infinite":false,
  "layers":[
@@ -108,6 +100,11 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"coins",
+                         "type":"string",
+                         "value":"coins"
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
@@ -121,6 +118,11 @@
                          "name":"drops",
                          "type":"string",
                          "value":"[11]"
+                        }, 
+                        {
+                         "name":"label",
+                         "type":"string",
+                         "value":"coins"
                         }, 
                         {
                          "name":"yOrigin",
@@ -138,12 +140,17 @@
                  "gid":1811,
                  "height":32,
                  "id":48,
-                 "name":"",
+                 "name":"coins",
                  "properties":[
+                        {
+                         "name":"coins",
+                         "type":"string",
+                         "value":"coins"
+                        }, 
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -154,6 +161,11 @@
                          "name":"drops",
                          "type":"string",
                          "value":"[11]"
+                        }, 
+                        {
+                         "name":"label",
+                         "type":"string",
+                         "value":"coins"
                         }, 
                         {
                          "name":"yOrigin",
@@ -174,9 +186,14 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"coins",
+                         "type":"string",
+                         "value":"coins"
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -187,6 +204,11 @@
                          "name":"drops",
                          "type":"string",
                          "value":"[11]"
+                        }, 
+                        {
+                         "name":"label",
+                         "type":"string",
+                         "value":"coins"
                         }, 
                         {
                          "name":"yOrigin",
@@ -17546,9 +17568,14 @@
                  "id":994,
                  "properties":[
                         {
+                         "name":"coins",
+                         "type":"string",
+                         "value":"coins"
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -17559,6 +17586,11 @@
                          "name":"drops",
                          "type":"string",
                          "value":"[11]"
+                        }, 
+                        {
+                         "name":"label",
+                         "type":"string",
+                         "value":"coins"
                         }, 
                         {
                          "name":"yOrigin",

@@ -33,6 +33,7 @@ class MenuScene extends Phaser.Scene {
   update() {
     if (this.inputKeys.start.isDown) {
       // console.log("buttonE is pressed");
+      this.sound.get("title_music").stop();
       this.scene.start("SceneOne");
     }
   }

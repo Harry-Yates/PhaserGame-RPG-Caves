@@ -10,6 +10,7 @@ export default class SceneOne extends Phaser.Scene {
     super("SceneOne");
     this.enemies = [];
     this.textbubble, this.content;
+    this.score = 0;
   }
 
   preload() {
@@ -44,7 +45,9 @@ export default class SceneOne extends Phaser.Scene {
     const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
-
+    var score = 0;
+    var scoreText;
+    scoreText = this.add.text(16, 16, "score: 0", { fontSize: "32px", fill: "#000" });
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -88,18 +91,36 @@ export default class SceneOne extends Phaser.Scene {
     // camera.startFollow(this.player);
     // camera.setLerp(0.1, 0.1);
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
-    this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
+        console.log("is fired");
+        score += 10;
+        scoreText.setText("score: " + score);
         this.textbubble.destroy();
         this.content.destroy();
+        // console.log(bodyA);
+        // console.log(bodyA.name);
+        console.log(bodyA.type);
+        // console.log(bodyA.label);
       }
     });
 
-    this.scoreText = this.add.text(16, 16, "score: 0", { fontSize: "25px", fill: "#fff" });
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      if (bodyA.label == "treasure" && bodyB.label == "playerSensor") {
+        console.log("is fired");
+        score += 10;
+        scoreText.setText("score: " + score);
+        console.log(bodyA);
+        // console.log(bodyA.name);
+        // console.log(bodyA.type);
+        // console.log(bodyA.label);
+      }
+    });
+
+    // this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
   }
 
   update() {
-    this.sound.get("title_music").stop();
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }

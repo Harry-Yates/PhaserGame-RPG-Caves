@@ -15,17 +15,6 @@
         }, 
         {
          "draworder":"topdown",
-         "id":12,
-         "name":"Enemies",
-         "objects":[],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
          "id":18,
          "name":"SafePortal",
          "objects":[
@@ -519,6 +508,17 @@
                  "x":352,
                  "y":480
                 }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":12,
+         "name":"Enemies",
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -2481,7 +2481,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -2513,7 +2512,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -2563,7 +2561,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -2633,7 +2630,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -2712,7 +2708,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -3817,7 +3812,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -3849,7 +3843,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -10396,6 +10389,11 @@
                 {
                  "id":994,
                  "properties":[
+                        {
+                         "name":"coins",
+                         "type":"string",
+                         "value":"coins"
+                        }, 
                         {
                          "name":"collides",
                          "type":"bool",
