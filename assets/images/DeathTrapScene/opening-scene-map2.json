@@ -315,34 +315,6 @@
                 {
                  "gid":1073743701,
                  "height":32,
-                 "id":73,
-                 "name":"troll",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"drops",
-                         "type":"string",
-                         "value":"[59]"
-                        }, 
-                        {
-                         "name":"health",
-                         "type":"int",
-                         "value":200
-                        }],
-                 "rotation":180,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":160,
-                 "y":128
-                }, 
-                {
-                 "gid":1073743701,
-                 "height":32,
                  "id":74,
                  "name":"troll",
                  "properties":[
@@ -563,6 +535,118 @@
                  "width":32,
                  "x":320,
                  "y":128
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":83,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":224.91533180778,
+                 "y":200.75057208238
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":84,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":320,
+                 "y":192
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":85,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":224
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":86,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":288
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -571,7 +655,7 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":83,
+ "nextobjectid":88,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
