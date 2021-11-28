@@ -44,7 +44,8 @@ export default class SceneOne extends Phaser.Scene {
     const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
-
+    var score = 0;
+    var scoreText;
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -95,11 +96,17 @@ export default class SceneOne extends Phaser.Scene {
       }
     });
 
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
+        score += 10;
+        this.scoreText.setText("score: " + score);
+      }
+    });
+
     this.scoreText = this.add.text(16, 16, "score: 0", { fontSize: "25px", fill: "#fff" });
   }
 
   update() {
-    this.sound.get("title_music").stop();
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
