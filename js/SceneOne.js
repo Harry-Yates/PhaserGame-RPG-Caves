@@ -45,7 +45,6 @@ export default class SceneOne extends Phaser.Scene {
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
     let score = 0;
-
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -68,7 +67,7 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene2");
+          this.scene.start("scene2", { score: this.score });
         }, 1);
         // console.log("change screen");
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {

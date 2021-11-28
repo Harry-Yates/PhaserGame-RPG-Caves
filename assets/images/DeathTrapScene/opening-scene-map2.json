@@ -85,7 +85,7 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":128,
+                 "x":96,
                  "y":64
                 }, 
                 {
@@ -113,7 +113,7 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":288,
+                 "x":224,
                  "y":64
                 }, 
                 {
@@ -141,8 +141,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":125.988966751156,
-                 "y":99.2706127926048
+                 "x":96,
+                 "y":128
                 }, 
                 {
                  "gid":1073743701,
@@ -169,8 +169,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":191.639779335023,
-                 "y":98.5072312509319
+                 "x":160,
+                 "y":256
                 }, 
                 {
                  "gid":1073743701,
@@ -197,8 +197,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":317.597733711048,
-                 "y":98.5072312509319
+                 "x":96,
+                 "y":288
                 }, 
                 {
                  "gid":1073743701,
@@ -225,8 +225,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":319.887878336067,
-                 "y":129.042492917847
+                 "x":256,
+                 "y":192
                 }, 
                 {
                  "gid":1073743701,
@@ -253,8 +253,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":258.817355002236,
-                 "y":97.743849709259
+                 "x":224,
+                 "y":256
                 }, 
                 {
                  "gid":1073743701,
@@ -281,8 +281,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":99.2706127926048,
-                 "y":98.5072312509319
+                 "x":252.851258581236,
+                 "y":136.347826086957
                 }, 
                 {
                  "gid":1073743701,
@@ -309,8 +309,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":64.1550618756523,
-                 "y":125.988966751156
+                 "x":160,
+                 "y":224
                 }, 
                 {
                  "gid":1073743701,
@@ -337,8 +337,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":64.1550618756523,
-                 "y":161.104517668108
+                 "x":160,
+                 "y":128
                 }, 
                 {
                  "gid":1073743701,
@@ -365,8 +365,204 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":31.3296555837185,
-                 "y":191.639779335023
+                 "x":192,
+                 "y":224
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":76,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":128,
+                 "y":256
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":77,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":288,
+                 "y":288
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":78,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":320,
+                 "y":288
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":79,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":224,
+                 "y":224
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":80,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":128,
+                 "y":288
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":81,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":256,
+                 "y":288
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":82,
+                 "name":"troll",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":200
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":320,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -375,7 +571,7 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":76,
+ "nextobjectid":83,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

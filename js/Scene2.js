@@ -9,6 +9,7 @@ class Scene2 extends Phaser.Scene {
     super("scene2");
     this.enemies = [];
   }
+
   preload() {
     // what assets does the game need
     console.log("hello Scene 2");
@@ -39,7 +40,7 @@ class Scene2 extends Phaser.Scene {
     const layer1 = map.createLayer("Tile Layer 1", resources, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
-
+    let score = 0;
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -49,17 +50,17 @@ class Scene2 extends Phaser.Scene {
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 188, y: 310, texture: "main_character", frame: "u1" });
+
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
-      up: Phaser.Input.Keyboard.KeyCodes.W,
-      down: Phaser.Input.Keyboard.KeyCodes.S,
-      left: Phaser.Input.Keyboard.KeyCodes.A,
-      right: Phaser.Input.Keyboard.KeyCodes.D,
+      up: Phaser.Input.Keyboard.KeyCodes.I,
+      down: Phaser.Input.Keyboard.KeyCodes.K,
+      left: Phaser.Input.Keyboard.KeyCodes.J,
+      right: Phaser.Input.Keyboard.KeyCodes.L,
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         this.scene.start("DeathTrapScene");
-       
       }
       // console.log(bodyA.label);
       // console.log(bodyB.label);
@@ -70,6 +71,15 @@ class Scene2 extends Phaser.Scene {
     // camera.startFollow(this.player);
     // camera.setLerp(0.1, 0.1);
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
+
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
+        score += 10;
+        this.scoreText.setText("score: " + score);
+      }
+    });
+
+    this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
   }
 
   update() {
