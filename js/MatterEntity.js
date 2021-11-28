@@ -19,7 +19,7 @@ export default class MatterEntity extends Phaser.Physics.Matter.Sprite {
     if (this.dead) {
       return this._position.set(0, 0);
     }
-    console.log(this.health);
+    // console.log(this.health);
 
     // if (this.health == 0) {
     //   return null;

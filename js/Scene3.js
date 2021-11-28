@@ -5,7 +5,6 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
-
 class Scene3 extends Phaser.Scene {
   constructor() {
     super("scene3");
