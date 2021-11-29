@@ -12,8 +12,8 @@ const config = {
   backgroundColor: "#333333",
   type: Phaser.AUTO,
   parent: "phaser-game",
-  scene: [MenuScene, SceneOne, Scene2, Scene3, Scene4endscene, GameoverScene, GamewinScene],
-  scene: [Scene4endscene, GameoverScene, GamewinScene],
+  scene: [MenuScene, SceneOne, Scene2, Scene3, Scene4endscene, GamewinScene, GameoverScene],
+  // scene: [Scene4endscene, GameoverScene, GamewinScene],
 
   // scene: [Scene2],
   // scene: [Scene3],

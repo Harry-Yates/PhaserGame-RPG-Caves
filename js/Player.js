@@ -5,6 +5,7 @@ export default class Player extends MatterEntity {
     let { scene, x, y, texture, frame } = data;
     super({ ...data, health: 1, drops: [], name: "player" });
     this.touching = [];
+    this.scoreText, this.score;
     // console.log(data);
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     var playerCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "'playerCollider'" });
@@ -19,6 +20,10 @@ export default class Player extends MatterEntity {
     this.interactionCollision(playerCollider);
   }
 
+  init(data) {
+    this.score = data.score;
+  }
+
   static preload(scene) {
     scene.load.atlas("main_character", "./assets/images/main-character/main_character.png ", "./assets/images/main-character/main_character_atlas.json");
     scene.load.animation("main_character", "./assets/images/main-character/main_character_anim.json");
@@ -31,12 +36,14 @@ export default class Player extends MatterEntity {
   onDeath = () => {
     this.setTexture("dead", 0);
     setTimeout(() => {
-      // this.scene.scene.pause(); // disable all active events
-      this.scene.scene.start("GameoverScene");
-      console.log("score on death", this.scene, this.scene.score);
+      console.log(this.scene);
+      // this.scene.scene.pause();
+      this.scene.scene.start("GameoverScene", {score: this.scene.score});
+      console.log("score on death in: ", this.scene, this.scene.score);
       this.setOrigin(0.5);
       this.anims.stop();
       this.destroy();
+      
     }, 2500);
   };
 

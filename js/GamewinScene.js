@@ -1,6 +1,11 @@
 class GamewinScene extends Phaser.Scene {
   constructor() {
     super("GamewinScene");
+    this.scoreText, this.score;
+  }
+
+  init(data) {
+    this.score = data.score;
   }
 
   preload() {
@@ -13,6 +18,7 @@ class GamewinScene extends Phaser.Scene {
   create() {
     var bg = this.add.sprite(0, 0, "background2");
     bg.setOrigin(0, 0);
+    this.scoreText = this.add.text(16, 16, `score: ${this.score}`, { fontSize: '32px', fill: '#fff' });
 
     // var play = this.add.sprite(193, 350, "play_button");
     // bg.setOrigin(0, 0);
@@ -36,6 +42,7 @@ class GamewinScene extends Phaser.Scene {
       // this.events.off();
       this.scene.start("MenuScene");
       this.sound.get("gameover").stop();
+      console.log(this.scene);
     }
   }
 }

@@ -105,7 +105,8 @@ class Scene4endscene extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "endportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("GamewinScene");
+          this.scene.start("GamewinScene", {score: this.score});
+          console.log(this.scene);
         }, 1);
       }
     });

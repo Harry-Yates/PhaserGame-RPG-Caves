@@ -1,6 +1,13 @@
 class GameoverScene extends Phaser.Scene {
   constructor() {
     super("GameoverScene");
+    this.scoreText, this.score;
+  }
+
+  init(data) {
+    console.log(data);
+    this.score = data.score;
+    console.log(this.score);
   }
 
   preload() {
@@ -13,6 +20,8 @@ class GameoverScene extends Phaser.Scene {
   create() {
     var bg = this.add.sprite(0, 0, "background2");
     bg.setOrigin(0, 0);
+
+    this.scoreText = this.add.text(16, 16, `score: ${this.score}`, { fontSize: '32px', fill: '#fff' });
 
     // var play = this.add.sprite(193, 350, "play_button");
     // bg.setOrigin(0, 0);
