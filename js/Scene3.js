@@ -5,6 +5,7 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
+var eventListener;
 class Scene3 extends Phaser.Scene {
   constructor() {
     super("scene3");
@@ -16,6 +17,7 @@ class Scene3 extends Phaser.Scene {
     this.score = data.score;
     // this.updateScore = data.updateScore;
     console.log("score from scene 1 is:", this.score);
+    console.log("treasure data", data.treasureCoinCatcher);
   }
   preload() {
     // what assets does the game need
@@ -109,14 +111,18 @@ class Scene3 extends Phaser.Scene {
       }
 
       // update score on collision
-
-      this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-        if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
-          this.score += 10;
-          this.scoreText.setText(`score: ${this.score}`);
-          console.log("Updated score at scene 3 is: ", this.score);
-        }
-      });
+      // console.log("create collision scene 3");
+      if (!eventListener) {
+        this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+          if (bodyA.label == "coins" && bodyB.label == "playerSensor") {
+            console.log("name before scene 3", bodyA.label, bodyB.label);
+            this.score += 10;
+            this.scoreText.setText(`score: ${this.score}`);
+            console.log("Updated score at scene 3 is: ", this.score);
+          }
+        });
+        eventListener = true;
+      }
     });
   }
 

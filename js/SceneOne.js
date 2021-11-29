@@ -5,6 +5,7 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
+var treasureCoinCatcher;
 export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
@@ -72,7 +73,7 @@ export default class SceneOne extends Phaser.Scene {
         // console.log("change screen");
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene3", { score: this.score });
+          this.scene.start("scene3", { score: this.score, treasureCoinCatcher });
           console.log("score saved at scene one before changing scenes", this.score);
         }, 1);
         // console.log("change screen");
@@ -99,8 +100,9 @@ export default class SceneOne extends Phaser.Scene {
 
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 
-    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
+    treasureCoinCatcher = this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      console.log("name before scene 1", bodyA.label, bodyB.label);
+      if (bodyA.label == "coins" && bodyB.label == "playerSensor") {
         this.score += 10;
         this.scoreText.setText(`score: ${this.score}`);
         console.log("score in scene 1:", this.score);
