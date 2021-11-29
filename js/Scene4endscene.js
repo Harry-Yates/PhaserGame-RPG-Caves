@@ -31,6 +31,8 @@ class Scene4endscene extends Phaser.Scene {
     this.load.image("endportal", "./assets/images/endPortal/endportal.png");
     this.load.tilemapTiledJSON("end-scene", "./assets/images/endScene/end-scene.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
+    this.load.image("Chopper", "./assets/images/chopper.png");
+    this.load.audio("choppa", "./assets/audio/choppa.mp3");
   }
 
   create() {
@@ -51,6 +53,7 @@ class Scene4endscene extends Phaser.Scene {
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
+    let choppa = this.sound.add("choppa");
 
     layer0.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer0);
@@ -101,18 +104,20 @@ class Scene4endscene extends Phaser.Scene {
         this.content.destroy();
       }
     });
-
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "endportal" && bodyB.label == "playerSensor") {
+        choppa.play();
         setTimeout(() => {
-          this.scene.start("GamewinScene", {score: this.score});
-          console.log(this.scene);
-        }, 1);
+          this.scene.start("GamewinScene");
+        }, 6000);
       }
     });
 
     //add score
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
+    this.chopper = this.add.image(300, 100, "Chopper").setOrigin(0);
+    this.chopper.setScale(0.8);
+    this.chopper.setOrigin(-0.5);
 
     if (!coinEventListener) {
       this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
@@ -129,6 +134,8 @@ class Scene4endscene extends Phaser.Scene {
   update() {
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
+    this.chopper.rotation += 0.001;
+    this.chopper.setDepth(100);
   }
 }
 
