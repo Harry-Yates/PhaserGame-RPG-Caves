@@ -17,7 +17,7 @@ export default class Treasure extends MatterEntity {
     let yOrigin = treasure.properties.find((p) => p.name == "yOrigin").value;
     this.y = this.y + this.height * (yOrigin - 0.5);
     const { Bodies } = Phaser.Physics.Matter.Matter;
-    var circleCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "collider" });
+    var circleCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "coins" });
     this.setExistingBody(circleCollider);
     this.setStatic(true);
     this.setOrigin(0.5, 0.3);

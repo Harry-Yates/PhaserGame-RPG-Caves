@@ -5,7 +5,7 @@ export default class Player extends MatterEntity {
     let { scene, x, y, texture, frame } = data;
     super({ ...data, health: 1, drops: [], name: "player" });
     this.touching = [];
-    console.log(data);
+    // console.log(data);
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
     var playerCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "'playerCollider'" });
     var playerSensor = Bodies.circle(this.x, this.y, 24, { isSensor: true, label: "playerSensor" });
@@ -32,6 +32,7 @@ export default class Player extends MatterEntity {
     this.setTexture("dead", 0);
     setTimeout(() => {
       this.scene.scene.start("GameoverScene");
+      console.log("score on death", this.scene, this.scene.score);
       this.setOrigin(0.5);
       this.anims.stop();
       this.destroy();
