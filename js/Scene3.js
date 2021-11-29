@@ -16,11 +16,10 @@ class Scene3 extends Phaser.Scene {
     // console.log('init', data);
     this.score = data.score;
     // this.updateScore = data.updateScore;
-    console.log(this.score);
+    console.log("score from scene 1 is:", this.score);
   }
   preload() {
     // what assets does the game need
-    console.log("hello Scene 3");
     Player.preload(this);
     // Enemy.preload(this);
     Treasure.preload(this);
@@ -56,7 +55,7 @@ class Scene3 extends Phaser.Scene {
 
     //add score
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
-    console.log(this.score);
+    // console.log("score at scene 3 is: ", this.score);
     
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
@@ -114,13 +113,19 @@ class Scene3 extends Phaser.Scene {
     
     
     // update score on collision
-    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
-        this.score += 10;
-        this.scoreText.setText(`score: ${this.score}`);
-        console.log(this.score);
-      }
-    });
+    
+    
+      this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+        if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
+          this.score += 10;
+          this.scoreText.setText(`score: ${this.score}`);
+          console.log("Updated score at scene 3 is: ", this.score);
+          
+        }
+      });
+    
+
+    
 
     
     

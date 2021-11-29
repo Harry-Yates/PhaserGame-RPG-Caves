@@ -9,7 +9,7 @@ export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
     // this.enemies = [];
-    this.textbubble, this.content, this.updateScore;
+    this.textbubble, this.content, this.updateScore, this.score = 0;
    
   }
 
@@ -45,7 +45,7 @@ export default class SceneOne extends Phaser.Scene {
     const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
-    let score = 0;
+  
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -68,13 +68,13 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene2", { score: score });
+          this.scene.start("scene2", { score: this.score });
         }, 1);
         // console.log("change screen");
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene3", { score: score });
-          console.log(score);
+          this.scene.start("scene3", { score: this.score });
+          console.log("score saved at scene one before changing scenes", this.score);
         }, 1);
         // console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
@@ -98,12 +98,13 @@ export default class SceneOne extends Phaser.Scene {
     });
     // this.updateScore(score);
 
-    this.scoreText = this.add.text(10, 5, `score: ${score}`, { fontSize: "20px", fill: "#fff" });
+    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
-        score += 10;
-        this.scoreText.setText(`score: ${score}`);
+        this.score += 10;
+        this.scoreText.setText(`score: ${this.score}`);
+        console.log("score in scene 1:", this.score);
       }
     });
 
