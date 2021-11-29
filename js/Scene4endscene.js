@@ -4,19 +4,19 @@ import Enemy from "./Enemy.js";
 import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
+import EndPortal from "./EndPortal.js";
 
 var coinEventListener;
 class Scene4endscene extends Phaser.Scene {
   constructor() {
     super("scene4endscene");
     this.enemies = [];
-    this.textbubble, this.content, this.score;;
+    this.textbubble, this.content, this.score;
   }
 
   init(data) {
     this.score = data.score;
-
-  } 
+  }
   preload() {
     // what assets does the game need
     Player.preload(this);
@@ -28,6 +28,7 @@ class Scene4endscene extends Phaser.Scene {
     this.load.image("dirt", "./assets/images/endScene/dirt.png");
     this.load.image("elements", "./assets/images/endScene/elements.png");
     this.load.image("resources", "./assets/images/endScene/resources.png");
+    this.load.image("endportal", "./assets/images/endPortal/endportal.png");
     this.load.tilemapTiledJSON("end-scene", "./assets/images/endScene/end-scene.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
   }
@@ -38,8 +39,6 @@ class Scene4endscene extends Phaser.Scene {
     // setTimeout(() => {
     //   this.scene.start("scene2");
     // }, 2000);
-
-     
 
     // console.log("hello bridge scene", this.matter);
     const map = this.make.tilemap({ key: "end-scene" });
@@ -65,6 +64,7 @@ class Scene4endscene extends Phaser.Scene {
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
+    this.map.getObjectLayer("EndPortal").objects.forEach((endportal) => new EndPortal({ scene: this, endportal }));
     this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 300, y: 500, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
@@ -102,8 +102,16 @@ class Scene4endscene extends Phaser.Scene {
       }
     });
 
-   //add score
-   this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      if (bodyA.label == "endportal" && bodyB.label == "playerSensor") {
+        setTimeout(() => {
+          this.scene.start("GameoverScene");
+        }, 1);
+      }
+    });
+
+    //add score
+    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 
     if (!coinEventListener) {
       this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
@@ -111,7 +119,6 @@ class Scene4endscene extends Phaser.Scene {
           this.score += 10;
           this.scoreText.setText(`score: ${this.score}`);
           console.log("score in scene4end:", this.score);
-         
         }
       });
       coinEventListener = true;

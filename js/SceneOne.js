@@ -67,6 +67,7 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
+          // console.log("score saved at scene one before changing scenes", this.score);
           this.scene.start("scene2", { score: this.score });
         }, 1);
         // console.log("change screen");
@@ -98,7 +99,7 @@ export default class SceneOne extends Phaser.Scene {
 
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 
-   this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       // console.log("name before scene 1", bodyA.label, bodyB.label);
       if (bodyA.label == "coins" && bodyB.label == "playerSensor") {
         this.score += 10;
@@ -107,7 +108,6 @@ export default class SceneOne extends Phaser.Scene {
       }
     });
   }
-
 
   update() {
     this.enemies.forEach((enemy) => enemy.update());

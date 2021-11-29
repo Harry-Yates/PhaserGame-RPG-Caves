@@ -595,34 +595,6 @@
                 {
                  "gid":1073743701,
                  "height":32,
-                 "id":85,
-                 "name":"troll",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"drops",
-                         "type":"string",
-                         "value":"[59]"
-                        }, 
-                        {
-                         "name":"health",
-                         "type":"int",
-                         "value":200
-                        }],
-                 "rotation":180,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":64,
-                 "y":224
-                }, 
-                {
-                 "gid":1073743701,
-                 "height":32,
                  "id":86,
                  "name":"troll",
                  "properties":[

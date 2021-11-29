@@ -32,9 +32,8 @@ class GameoverScene extends Phaser.Scene {
   update() {
     if (this.inputKeys.start.isDown) {
       // console.log("buttonE is pressed");
-      this.registry.destroy(); // destroy registry
-      this.events.off();
-      this.scene.pause("EndScene"); // disable all active events
+      // this.registry.destroy(); // destroy registry
+      // this.events.off();
       this.scene.start("MenuScene");
       this.sound.get("gameover").stop();
     }

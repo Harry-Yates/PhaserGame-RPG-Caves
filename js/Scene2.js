@@ -37,8 +37,6 @@ class Scene2 extends Phaser.Scene {
     // setTimeout(() => {
     //   this.scene.start("scene2");
     // }, 2000);
-    
-    
 
     const map = this.make.tilemap({ key: "map2" });
     this.map = map;
@@ -66,30 +64,28 @@ class Scene2 extends Phaser.Scene {
       left: Phaser.Input.Keyboard.KeyCodes.J,
       right: Phaser.Input.Keyboard.KeyCodes.L,
     });
-    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
-        this.scene.start("DeathTrapScene");
-      }
-    });
+    // this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+    //   if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
+    //     this.scene.start("DeathTrapScene");
+    //   }
+    // });
     // let camera = this.cameras.main;
     // camera.zoom = 1.6;
     // camera.startFollow(this.player);
     // camera.setLerp(0.1, 0.1);
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
-  
+
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 
-      this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+    this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
         this.score += 10;
         this.scoreText.setText(`score: ${this.score}`);
       }
     });
-    
 
     // this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
   }
-  
 
   update() {
     this.enemies.forEach((enemy) => enemy.update());
