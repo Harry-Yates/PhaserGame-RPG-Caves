@@ -21,7 +21,7 @@ class GameoverScene extends Phaser.Scene {
     var bg = this.add.sprite(0, 0, "background2");
     bg.setOrigin(0, 0);
 
-    this.scoreText = this.add.text(176, 373, `${this.score}`, { fontSize: '32px', fill: '#fff' });
+    this.scoreText = this.add.text(176, 373, `${this.score}`, { fontSize: "32px", fill: "#fff" });
 
     // var play = this.add.sprite(193, 350, "play_button");
     // bg.setOrigin(0, 0);

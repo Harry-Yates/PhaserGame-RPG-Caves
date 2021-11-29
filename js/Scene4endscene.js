@@ -108,16 +108,15 @@ class Scene4endscene extends Phaser.Scene {
       if (bodyA.label == "endportal" && bodyB.label == "playerSensor") {
         choppa.play();
         setTimeout(() => {
-          this.scene.start("GamewinScene", {score: this.score});
+          this.scene.start("GamewinScene", { score: this.score });
         }, 6000);
       }
     });
 
-    
     this.chopper = this.add.image(300, 100, "Chopper").setOrigin(0);
     this.chopper.setScale(0.8);
     this.chopper.setOrigin(-0.5);
-   
+
     //add score
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 

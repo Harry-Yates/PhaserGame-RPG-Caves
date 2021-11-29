@@ -9,16 +9,16 @@ class GamewinScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("background2", "./assets/images/gamewinscene/gamewin.png");
+    this.load.image("background3", "./assets/images/gamewinscene/gamewin.png");
     this.load.audio("gamewin", "./assets/audio/gamewin.mp3");
     this.inputKeys = this.input.keyboard.addKeys({
       start: Phaser.Input.Keyboard.KeyCodes.E,
     });
   }
   create() {
-    var bg = this.add.sprite(0, 0, "background2");
+    var bg = this.add.sprite(0, 0, "background3");
     bg.setOrigin(0, 0);
-    this.scoreText = this.add.text(170, 368, `${this.score}`, { fontSize: '32px', fill: '#fff' });
+    this.scoreText = this.add.text(170, 368, `${this.score}`, { fontSize: "32px", fill: "#fff" });
 
     // var play = this.add.sprite(193, 350, "play_button");
     // bg.setOrigin(0, 0);
@@ -41,7 +41,7 @@ class GamewinScene extends Phaser.Scene {
       // this.registry.destroy(); // destroy registry
       // this.events.off();
       this.scene.start("MenuScene");
-      this.sound.get("gameover").stop();
+      this.sound.get("gamewin").stop();
       console.log(this.scene);
     }
   }
