@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"choppa.json"
-        }
-    },
  "height":16,
  "infinite":false,
  "layers":[
@@ -575,27 +567,22 @@
         }, 
         {
          "draworder":"topdown",
-         "id":26,
+         "id":27,
          "name":"EndPortal",
          "objects":[
                 {
-                 "gid":3715,
+                 "gid":3713,
                  "height":32,
-                 "id":147,
+                 "id":148,
                  "name":"",
                  "properties":[
-                        {
-                         "name":"xOrigin",
-                         "type":"float",
-                         "value":0.2
-                        }, 
                         {
                          "name":"yOrigin",
                          "type":"float",
                          "value":0.5
                         }],
                  "rotation":0,
-                 "type":"right",
+                 "type":"",
                  "visible":true,
                  "width":32,
                  "x":64,
@@ -28708,7 +28695,7 @@
          "margin":0,
          "name":"endportal",
          "spacing":0,
-         "tilecount":4,
+         "tilecount":1,
          "tileheight":32,
          "tiles":[
                 {
@@ -28718,43 +28705,7 @@
                          "name":"yOrigin",
                          "type":"float",
                          "value":0.5
-                        }],
-                 "type":"bigchest"
-                }, 
-                {
-                 "id":1,
-                 "properties":[
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.5
-                        }],
-                 "type":"down"
-                }, 
-                {
-                 "id":2,
-                 "properties":[
-                        {
-                         "name":"xOrigin",
-                         "type":"float",
-                         "value":0.2
-                        }, 
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.5
-                        }],
-                 "type":"right"
-                }, 
-                {
-                 "id":3,
-                 "properties":[
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.5
-                        }],
-                 "type":"left"
+                        }]
                 }],
          "tilewidth":32
         }],

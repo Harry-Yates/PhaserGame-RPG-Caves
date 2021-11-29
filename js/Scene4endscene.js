@@ -28,7 +28,7 @@ class Scene4endscene extends Phaser.Scene {
     this.load.image("dirt", "./assets/images/endScene/dirt.png");
     this.load.image("elements", "./assets/images/endScene/elements.png");
     this.load.image("resources", "./assets/images/endScene/resources.png");
-    this.load.image("endportal", "./assets/images/endPortal/endportal.png");
+    this.load.image("endportal", "./assets/images/endportal/endportal.png");
     this.load.tilemapTiledJSON("end-scene", "./assets/images/endScene/end-scene.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("Chopper", "./assets/images/chopper.png");
@@ -48,6 +48,7 @@ class Scene4endscene extends Phaser.Scene {
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
     const dirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
     const elements = map.addTilesetImage("elements", "elements", 32, 32, 0, 0);
+    const endScene = map.addTilesetImage("endscene", "endscene", 32, 32, 0, 0);
     const layer0 = map.createLayer("Tile Layer 0", dirt, 0, 0);
     const layer1 = map.createLayer("Tile Layer 1", resources, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
