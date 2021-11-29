@@ -5,14 +5,13 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
-
 class Scene3 extends Phaser.Scene {
   constructor() {
     super("scene3");
     // this.enemies = [];
     this.textbubble, this.content, this.score;
   }
-  init(data){
+  init(data) {
     // console.log('init', data);
     this.score = data.score;
     // this.updateScore = data.updateScore;
@@ -31,8 +30,6 @@ class Scene3 extends Phaser.Scene {
     this.load.image("resources", "./assets/images/bridgeScene/resources.png");
     this.load.tilemapTiledJSON("map3", "./assets/images/bridgeScene/opening-scene-map3.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
-
-    
   }
 
   create() {
@@ -56,7 +53,7 @@ class Scene3 extends Phaser.Scene {
     //add score
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
     // console.log("score at scene 3 is: ", this.score);
-    
+
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -110,32 +107,22 @@ class Scene3 extends Phaser.Scene {
         this.textbubble.destroy();
         this.content.destroy();
       }
-    
-    
-    // update score on collision
-    
-    
+
+      // update score on collision
+
       this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
         if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
           this.score += 10;
           this.scoreText.setText(`score: ${this.score}`);
           console.log("Updated score at scene 3 is: ", this.score);
-          
         }
       });
-    
-
-    
-
-    
-    
     });
   }
 
   update() {
     // this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
-    
   }
 }
 

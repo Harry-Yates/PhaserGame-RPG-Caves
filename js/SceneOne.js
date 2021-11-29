@@ -9,8 +9,7 @@ export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
     // this.enemies = [];
-    this.textbubble, this.content, this.updateScore, this.score = 0;
-   
+    this.textbubble, this.content, this.updateScore, (this.score = 0);
   }
 
   preload() {
@@ -45,7 +44,7 @@ export default class SceneOne extends Phaser.Scene {
     const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     let angelSound = this.sound.add("angelSound");
-  
+
     layer1.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer1);
     layer2.setCollisionByProperty({ collides: true });
@@ -107,8 +106,6 @@ export default class SceneOne extends Phaser.Scene {
         console.log("score in scene 1:", this.score);
       }
     });
-
-
   }
 
   // updateScore(score){
@@ -118,7 +115,6 @@ export default class SceneOne extends Phaser.Scene {
   //       this.scoreText.setText("score: " + score);
   //     }
   //   });
-    
 
   //   this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
   // }

@@ -53,12 +53,12 @@
                  "gid":1811,
                  "height":32,
                  "id":112,
-                 "name":"",
+                 "name":"coins",
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -86,12 +86,12 @@
                  "gid":1811,
                  "height":32,
                  "id":113,
-                 "name":"",
+                 "name":"coins",
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -124,7 +124,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -147,39 +147,6 @@
                  "width":32,
                  "x":192,
                  "y":512
-                }, 
-                {
-                 "gid":1811,
-                 "height":32,
-                 "id":118,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"depth",
-                         "type":"int",
-                         "value":1
-                        }, 
-                        {
-                         "name":"drops",
-                         "type":"string",
-                         "value":"[11]"
-                        }, 
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.6
-                        }],
-                 "rotation":0,
-                 "type":"coins",
-                 "visible":true,
-                 "width":32,
-                 "x":96,
-                 "y":320
                 }, 
                 {
                  "gid":1811,
@@ -223,7 +190,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -256,7 +223,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -289,7 +256,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -322,7 +289,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"depth",
@@ -345,73 +312,39 @@
                  "width":32,
                  "x":352,
                  "y":512
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":12,
-         "name":"Enemies",
-         "objects":[
-                {
-                 "gid":1073743701,
-                 "height":32,
-                 "id":55,
-                 "name":"golem",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"drops",
-                         "type":"string",
-                         "value":"[59]"
-                        }, 
-                        {
-                         "name":"health",
-                         "type":"int",
-                         "value":300
-                        }],
-                 "rotation":180,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":224,
-                 "y":480
                 }, 
                 {
-                 "gid":1073743701,
+                 "gid":1811,
                  "height":32,
-                 "id":124,
-                 "name":"golem",
+                 "id":135,
+                 "name":"coins",
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
+                        }, 
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
                         }, 
                         {
                          "name":"drops",
                          "type":"string",
-                         "value":"[59]"
+                         "value":"[11]"
                         }, 
                         {
-                         "name":"health",
-                         "type":"int",
-                         "value":300
+                         "name":"yOrigin",
+                         "type":"float",
+                         "value":0.6
                         }],
-                 "rotation":180,
-                 "type":"",
+                 "rotation":0,
+                 "type":"coins",
                  "visible":true,
                  "width":32,
-                 "x":254.588235294118,
-                 "y":416.35294117647
+                 "x":96,
+                 "y":320
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -726,9 +659,76 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":12,
+         "name":"Enemies",
+         "objects":[
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":55,
+                 "name":"golem",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":224,
+                 "y":480
+                }, 
+                {
+                 "gid":1073743701,
+                 "height":32,
+                 "id":124,
+                 "name":"golem",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"drops",
+                         "type":"string",
+                         "value":"[59]"
+                        }, 
+                        {
+                         "name":"health",
+                         "type":"int",
+                         "value":300
+                        }],
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":254.588235294118,
+                 "y":416.35294117647
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
  "nextlayerid":20,
- "nextobjectid":135,
+ "nextobjectid":136,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
