@@ -5,24 +5,23 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
-var eventListener;
+var coinEventListener;
 class Scene3 extends Phaser.Scene {
   constructor() {
     super("scene3");
-    // this.enemies = [];
+    this.enemies = [];
     this.textbubble, this.content, this.score;
   }
   init(data) {
     // console.log('init', data);
     this.score = data.score;
-    // this.updateScore = data.updateScore;
-    console.log("score from scene 1 is:", this.score);
-    console.log("treasure data", data.treasureCoinCatcher);
+    // console.log("score from scene 1 is:", this.score);
+    // console.log("treasure data", data.treasureCoinCatcher);
   }
   preload() {
     // what assets does the game need
     Player.preload(this);
-    // Enemy.preload(this);
+    Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
     SafePortal.preload(this);
@@ -66,7 +65,7 @@ class Scene3 extends Phaser.Scene {
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
-    // this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
+    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 105, y: 490, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
@@ -77,10 +76,10 @@ class Scene3 extends Phaser.Scene {
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
-        this.scene.start("scene2");
+        this.scene.start("scene2",{ score: this.score });
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene4endscene");
+          this.scene.start("scene4endscene", { score: this.score });
         }, 1);
         console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
@@ -112,22 +111,22 @@ class Scene3 extends Phaser.Scene {
 
       // update score on collision
       // console.log("create collision scene 3");
-      if (!eventListener) {
+      if (!coinEventListener) {
         this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
           if (bodyA.label == "coins" && bodyB.label == "playerSensor") {
-            console.log("name before scene 3", bodyA.label, bodyB.label);
+            // console.log("name before scene 3", bodyA.label, bodyB.label);
             this.score += 10;
             this.scoreText.setText(`score: ${this.score}`);
-            console.log("Updated score at scene 3 is: ", this.score);
+            // console.log("Updated score at scene 3 is: ", this.score);
           }
         });
-        eventListener = true;
+        coinEventListener = true;
       }
     });
   }
 
   update() {
-    // this.enemies.forEach((enemy) => enemy.update());
+    this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
 }

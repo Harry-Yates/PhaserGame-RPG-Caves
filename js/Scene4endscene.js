@@ -5,12 +5,18 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
+var coinEventListener;
 class Scene4endscene extends Phaser.Scene {
   constructor() {
     super("scene4endscene");
     this.enemies = [];
-    this.textbubble, this.content;
+    this.textbubble, this.content, this.score;;
   }
+
+  init(data) {
+    this.score = data.score;
+
+  } 
   preload() {
     // what assets does the game need
     Player.preload(this);
@@ -33,7 +39,9 @@ class Scene4endscene extends Phaser.Scene {
     //   this.scene.start("scene2");
     // }, 2000);
 
-    console.log("hello bridge scene", this.matter);
+     
+
+    // console.log("hello bridge scene", this.matter);
     const map = this.make.tilemap({ key: "end-scene" });
     this.map = map;
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
@@ -93,6 +101,21 @@ class Scene4endscene extends Phaser.Scene {
         this.content.destroy();
       }
     });
+
+   //add score
+   this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
+
+    if (!coinEventListener) {
+      this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+        if (bodyA.label == "coins" && bodyB.label == "playerSensor") {
+          this.score += 10;
+          this.scoreText.setText(`score: ${this.score}`);
+          console.log("score in scene4end:", this.score);
+         
+        }
+      });
+      coinEventListener = true;
+    }
   }
 
   update() {

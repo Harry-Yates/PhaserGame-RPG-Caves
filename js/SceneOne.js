@@ -5,17 +5,16 @@ import Portal from "./Portal.js";
 import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
-var treasureCoinCatcher;
 export default class SceneOne extends Phaser.Scene {
   constructor() {
     super("SceneOne");
-    // this.enemies = [];
+    this.enemies = [];
     this.textbubble, this.content, this.updateScore, (this.score = 0);
   }
 
   preload() {
     Player.preload(this);
-    // Enemy.preload(this);
+    Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
     SafePortal.preload(this);
@@ -56,7 +55,7 @@ export default class SceneOne extends Phaser.Scene {
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
-    // this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
+    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
@@ -73,8 +72,8 @@ export default class SceneOne extends Phaser.Scene {
         // console.log("change screen");
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene3", { score: this.score, treasureCoinCatcher });
-          console.log("score saved at scene one before changing scenes", this.score);
+          this.scene.start("scene3", { score: this.score });
+          // console.log("score saved at scene one before changing scenes", this.score);
         }, 1);
         // console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
@@ -96,33 +95,22 @@ export default class SceneOne extends Phaser.Scene {
         this.content.destroy();
       }
     });
-    // this.updateScore(score);
 
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 
-    treasureCoinCatcher = this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-      console.log("name before scene 1", bodyA.label, bodyB.label);
+   this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
+      // console.log("name before scene 1", bodyA.label, bodyB.label);
       if (bodyA.label == "coins" && bodyB.label == "playerSensor") {
         this.score += 10;
         this.scoreText.setText(`score: ${this.score}`);
-        console.log("score in scene 1:", this.score);
+        // console.log("score in scene 1:", this.score);
       }
     });
   }
 
-  // updateScore(score){
-  //   this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
-  //     if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
-  //       score += 10;
-  //       this.scoreText.setText("score: " + score);
-  //     }
-  //   });
-
-  //   this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
-  // }
 
   update() {
-    // this.enemies.forEach((enemy) => enemy.update());
+    this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
 }

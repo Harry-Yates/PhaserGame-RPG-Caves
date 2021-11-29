@@ -8,15 +8,20 @@ import SceneOne from "./SceneOne.js";
 class Scene2 extends Phaser.Scene {
   constructor() {
     super("scene2");
-    // this.enemies = [];
+    this.enemies = [];
+    this.score;
   }
-
+  init(data) {
+    this.score = data.score;
+    // this.updateScore = data.updateScore;
+    // console.log("score from scene 1 is:", this.score);
+    // console.log("treasure data", data.treasureCoinCatcher);
+  }
 
   preload() {
     // what assets does the game need
-    console.log("hello Scene 2");
     Player.preload(this);
-    // Enemy.preload(this);
+    Enemy.preload(this);
     Treasure.preload(this);
     Portal.preload(this);
     SafePortal.preload(this);
@@ -32,8 +37,9 @@ class Scene2 extends Phaser.Scene {
     // setTimeout(() => {
     //   this.scene.start("scene2");
     // }, 2000);
+    
+    
 
-    // console.log("hello death trap", this.matter);
     const map = this.make.tilemap({ key: "map2" });
     this.map = map;
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
@@ -50,7 +56,7 @@ class Scene2 extends Phaser.Scene {
     layer3.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer3);
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
-    // this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
+    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
     this.player = new Player({ scene: this, x: 188, y: 310, texture: "main_character", frame: "u1" });
 
     // this.player.setScale(1.5);
@@ -70,22 +76,23 @@ class Scene2 extends Phaser.Scene {
     // camera.startFollow(this.player);
     // camera.setLerp(0.1, 0.1);
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
+  
+    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
 
-    // updateScore(){}
       this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "collider" && bodyB.label == "playerSensor") {
-        score += 10;
-        this.scoreText.setText("score: " + score);
+        this.score += 10;
+        this.scoreText.setText(`score: ${this.score}`);
       }
     });
     
 
-    this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
+    // this.scoreText = this.add.text(10, 5, "score: 0", { fontSize: "20px", fill: "#fff" });
   }
   
 
   update() {
-    // this.enemies.forEach((enemy) => enemy.update());
+    this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
 }
