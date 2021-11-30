@@ -13,7 +13,7 @@ export default class SafePortal extends Phaser.Physics.Matter.Sprite {
     this.y -= this.height / 2;
     this.y = this.y + this.height * (yOrigin - 0.5);
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-    var circleCollider = Bodies.circle(this.x, this.y, 1, { isSensor: false, label: "safeportal" });
+    var circleCollider = Bodies.circle(this.x, this.y, 3, { isSensor: false, label: "safeportal" });
     this.setExistingBody(circleCollider);
     this.setStatic(true);
     this.setOrigin(0.5, yOrigin);

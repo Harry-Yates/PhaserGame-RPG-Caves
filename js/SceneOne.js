@@ -25,8 +25,12 @@ export default class SceneOne extends Phaser.Scene {
     this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
     // text box
     this.load.image("textBubble", "./assets/images/textbubble.png");
+    this.load.image("particle", "./assets/images/blueparticle.png");
+    this.load.audio("easterEgg", "../assets/audio/hit.wav");
+    this.inputKeys = this.input.keyboard.addKeys({
+      eastereggkey: Phaser.Input.Keyboard.KeyCodes.Q,
+    });
   }
-
   create() {
     // this.scale.displaySize.setAspectRatio(width / height);
     // this.scale.refresh();
@@ -35,6 +39,7 @@ export default class SceneOne extends Phaser.Scene {
     // }, 1);
 
     // console.log("hello death trap", this.matter);
+
     const map = this.make.tilemap({ key: "map" });
     this.map = map;
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
@@ -43,6 +48,8 @@ export default class SceneOne extends Phaser.Scene {
     const layer1 = map.createLayer("Tile Layer 1", groundDirt, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
+    const layer4 = map.createLayer("Tile Layer 4", groundObjects, 0, 0);
+    const particles = this.add.particles("particle");
     let angelSound = this.sound.add("angelSound");
 
     layer1.setCollisionByProperty({ collides: true });
@@ -51,6 +58,8 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer2);
     layer3.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer3);
+    layer4.setCollisionByProperty({ collides: true });
+    this.matter.world.convertTilemapLayer(layer4);
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
@@ -64,6 +73,7 @@ export default class SceneOne extends Phaser.Scene {
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
     });
+
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
@@ -107,9 +117,44 @@ export default class SceneOne extends Phaser.Scene {
         // console.log("score in scene 1:", this.score);
       }
     });
+
+    const emitter = particles.createEmitter({
+      x: 335,
+      y: 390,
+      speed: 200,
+      scale: 0.06,
+      speed: 6,
+      lifespan: 7000,
+      blendMode: "NORMAL",
+      frequency: 800,
+      gravityY: -20,
+      gravityX: 1,
+      alpha: 1,
+      // delay: 3400,
+      maxVelocityX: 10,
+      maxVelocityY: 10,
+      active: true,
+    });
+    let easterEgg = this.sound.add("easterEgg");
+    this.input.keyboard.on("keydown-Q", function () {
+      easterEgg.play();
+      console.log("You found the Q button Easter egg");
+    });
+
+    // choppa.play();
   }
 
   update() {
+    // if (this.inputKeys.eastereggkey.isDown) {
+    //   easterEgg.play();
+    //   console.log("play easteregg");
+    // }
+
+    // if (Phaser.Input.Keyboard.JustDown("eastereggkey")) {
+    //   easterEgg.play();
+    //   console.log("play easteregg");
+    // }
+
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }

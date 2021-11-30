@@ -5,7 +5,6 @@ class MenuScene extends Phaser.Scene {
 
   preload() {
     this.load.image("background", "./assets/images/menuscene/title_bg.png");
-    this.load.image("play_button", "./assets/images/menuscene/play_button.png");
     this.load.audio("title_music", "./assets/audio/title_music.mp3");
     this.inputKeys = this.input.keyboard.addKeys({
       start: Phaser.Input.Keyboard.KeyCodes.E,
