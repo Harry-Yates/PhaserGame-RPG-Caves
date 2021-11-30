@@ -10,10 +10,55 @@ class MenuScene extends Phaser.Scene {
     this.inputKeys = this.input.keyboard.addKeys({
       start: Phaser.Input.Keyboard.KeyCodes.E,
     });
+    this.load.image("particle", "./assets/images/blueparticle.png");
   }
   create() {
     var bg = this.add.sprite(0, 0, "background");
     bg.setOrigin(0, 0);
+
+    //Angel Particle Effect
+    const particles = this.add.particles("particle");
+    const emitterLeft = particles.createEmitter({
+      x: 170,
+      y: 419,
+      speed: 200,
+      scale: 0.04,
+      speed: 6,
+      lifespan: 9900,
+      blendMode: "ADD",
+      frequency: 800,
+      gravityY: -8,
+      gravityX: -3,
+      accelerationY: 0.00000000000001,
+      accelerationX: 0.00000000000001,
+      alpha: 0.5,
+      delay: 4000,
+      maxVelocityX: 10,
+      maxVelocityY: 10,
+      // active: true,
+    });
+
+    const emitterRight = particles.createEmitter({
+      x: 228,
+      y: 419,
+      speed: 200,
+      scale: 0.04,
+      speed: 6,
+      lifespan: 9900,
+      blendMode: "ADD",
+      frequency: 800,
+      gravityY: -8,
+      gravityX: 3,
+      accelerationY: 0.00000000000001,
+      accelerationX: 0.00000000000001,
+      alpha: 0.5,
+      delay: 4000,
+      maxVelocityX: 10,
+      maxVelocityY: 10,
+      // active: true,
+    });
+
+    // e.setDepth(99)
 
     // var play = this.add.sprite(193, 350, "play_button");
     // bg.setOrigin(0, 0);
