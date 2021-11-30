@@ -26,7 +26,7 @@ export default class SceneOne extends Phaser.Scene {
     // text box
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
-    this.load.audio("easterEgg", "../assets/audio/hit.wav");
+    this.load.audio("easterEgg", "./assets/audio/thriller.mp3");
     this.inputKeys = this.input.keyboard.addKeys({
       eastereggkey: Phaser.Input.Keyboard.KeyCodes.Q,
     });
@@ -135,26 +135,16 @@ export default class SceneOne extends Phaser.Scene {
       maxVelocityY: 10,
       active: true,
     });
+
+    //EASTER EGG PLAYER
     let easterEgg = this.sound.add("easterEgg");
     this.input.keyboard.on("keydown-Q", function () {
       easterEgg.play();
       console.log("You found the Q button Easter egg");
     });
-
-    // choppa.play();
   }
 
   update() {
-    // if (this.inputKeys.eastereggkey.isDown) {
-    //   easterEgg.play();
-    //   console.log("play easteregg");
-    // }
-
-    // if (Phaser.Input.Keyboard.JustDown("eastereggkey")) {
-    //   easterEgg.play();
-    //   console.log("play easteregg");
-    // }
-
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
   }
