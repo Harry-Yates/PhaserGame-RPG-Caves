@@ -33,6 +33,8 @@ class Scene4endscene extends Phaser.Scene {
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("Chopper", "./assets/images/chopper.png");
     this.load.audio("choppa", "./assets/audio/choppa.mp3");
+    this.load.audio("landing", "./assets/audio/landing.wav");
+    this.load.audio("easterEggmilk", "./assets/audio/milk.mp3");
   }
 
   create() {
@@ -108,6 +110,7 @@ class Scene4endscene extends Phaser.Scene {
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "endportal" && bodyB.label == "playerSensor") {
         choppa.play();
+
         setTimeout(() => {
           this.scene.start("GamewinScene", { score: this.score });
         }, 6000);
@@ -131,12 +134,22 @@ class Scene4endscene extends Phaser.Scene {
       });
       coinEventListener = true;
     }
+
+    //EASTER EGG PLAYER
+    let easterEgg = this.sound.add("easterEggmilk");
+    this.input.keyboard.on("keydown-Q", function () {
+      easterEgg.play();
+      console.log("You found the Q button Easter egg");
+    });
+
+    var landing = this.sound.add("landing");
+    landing.play();
   }
 
   update() {
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
-    this.chopper.rotation += 0.001;
+    this.chopper.rotation += 0.003;
     this.chopper.setDepth(100);
   }
 }

@@ -32,7 +32,7 @@ class Scene3 extends Phaser.Scene {
     this.load.tilemapTiledJSON("map3", "./assets/images/bridgeScene/opening-scene-map3.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
-    this.load.audio("easterEggsax", "./assets/audio/epicsax.mp3");
+    this.load.audio("easterEggdance", "./assets/audio/dance.mp3");
   }
 
   create() {
@@ -145,7 +145,7 @@ class Scene3 extends Phaser.Scene {
       active: true,
     });
     //EASTER EGG PLAYER
-    let easterEgg = this.sound.add("easterEggsax");
+    let easterEgg = this.sound.add("easterEggdance");
     this.input.keyboard.on("keydown-Q", function () {
       easterEgg.play();
       console.log("You found the Q button Easter egg");
