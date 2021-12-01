@@ -83,39 +83,6 @@
                  "y":288
                 }, 
                 {
-                 "gid":1811,
-                 "height":32,
-                 "id":113,
-                 "name":"coins",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"depth",
-                         "type":"int",
-                         "value":1
-                        }, 
-                        {
-                         "name":"drops",
-                         "type":"string",
-                         "value":"[11]"
-                        }, 
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.6
-                        }],
-                 "rotation":0,
-                 "type":"coins",
-                 "visible":true,
-                 "width":32,
-                 "x":96,
-                 "y":448
-                }, 
-                {
                  "gid":1804,
                  "height":32,
                  "id":117,
@@ -147,39 +114,6 @@
                  "width":32,
                  "x":224,
                  "y":480
-                }, 
-                {
-                 "gid":1811,
-                 "height":32,
-                 "id":119,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"collides",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"depth",
-                         "type":"int",
-                         "value":1
-                        }, 
-                        {
-                         "name":"drops",
-                         "type":"string",
-                         "value":"[11]"
-                        }, 
-                        {
-                         "name":"yOrigin",
-                         "type":"float",
-                         "value":0.6
-                        }],
-                 "rotation":0,
-                 "type":"coins",
-                 "visible":true,
-                 "width":32,
-                 "x":256,
-                 "y":160
                 }, 
                 {
                  "gid":1811,
