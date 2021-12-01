@@ -1,0 +1,203 @@
+{
+    "frames": [
+        {
+            "filename": "enemy_02-1",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 1,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "enemy_18",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 98,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "enemy_19",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 1,
+                "y": 130
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "enemy_22",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 98,
+                "y": 130
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "female_03-2",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 195,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "male_02-2",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 195,
+                "y": 130
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "male_12-2",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 1,
+                "y": 259
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "male_16-3",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 98,
+                "y": 259
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldier_01-2",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 195,
+                "y": 259
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "soldier_06-4",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 292,
+                "y": 1
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "male_09-3",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 292,
+                "y": 130
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "male_05-3",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 292,
+                "y": 259
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "male_04-2",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 1,
+                "y": 388
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "female_19-3",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 98,
+                "y": 388
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "enemy_05-1",
+            "frame": {
+                "w": 96,
+                "h": 128,
+                "x": 195,
+                "y": 388
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

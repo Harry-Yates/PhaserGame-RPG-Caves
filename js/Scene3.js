@@ -31,6 +31,8 @@ class Scene3 extends Phaser.Scene {
     this.load.image("resources", "./assets/images/bridgeScene/resources.png");
     this.load.tilemapTiledJSON("map3", "./assets/images/bridgeScene/opening-scene-map3.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
+    this.load.image("particle", "./assets/images/blueparticle.png");
+    this.load.audio("easterEgg", "./assets/audio/epicsax.mp3");
   }
 
   create() {
@@ -49,6 +51,7 @@ class Scene3 extends Phaser.Scene {
     const layer1 = map.createLayer("Tile Layer 1", dirt, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
+    const particles = this.add.particles("particle");
     let angelSound = this.sound.add("angelSound");
 
     //add score
@@ -76,10 +79,10 @@ class Scene3 extends Phaser.Scene {
     });
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       if (bodyA.label == "portal" && bodyB.label == "playerSensor") {
-        this.scene.start("scene2",{ score: this.score });
+        this.scene.start("scene2", { score: this.score });
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene4endscene", { score: this.score });
+          this.scene.start("scene5", { score: this.score });
         }, 1);
         console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
@@ -90,7 +93,7 @@ class Scene3 extends Phaser.Scene {
         angelSound.play();
         this.textbubble = this.add.image(260, 10, "textBubble").setOrigin(0);
         this.textbubble.setScale(0.095);
-        this.content = this.add.text(260, 10, "Third hole", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
+        this.content = this.add.text(260, 10, "Third cave", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
       }
 
       // console.log(bodyA.label);
@@ -117,11 +120,35 @@ class Scene3 extends Phaser.Scene {
             // console.log("name before scene 3", bodyA.label, bodyB.label);
             this.score += 10;
             this.scoreText.setText(`score: ${this.score}`);
+            console.log(`score: ${this.score}`);
             // console.log("Updated score at scene 3 is: ", this.score);
           }
         });
         coinEventListener = true;
       }
+    });
+    const emitter = particles.createEmitter({
+      x: 335,
+      y: 80,
+      speed: 200,
+      scale: 0.06,
+      speed: 6,
+      lifespan: 7000,
+      blendMode: "NORMAL",
+      frequency: 800,
+      gravityY: -20,
+      gravityX: 1,
+      alpha: 1,
+      // delay: 3400,
+      maxVelocityX: 10,
+      maxVelocityY: 10,
+      active: true,
+    });
+    //EASTER EGG PLAYER
+    let easterEgg = this.sound.add("easterEgg");
+    this.input.keyboard.on("keydown-Q", function () {
+      easterEgg.play();
+      console.log("You found the Q button Easter egg");
     });
   }
 

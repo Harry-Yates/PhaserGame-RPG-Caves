@@ -35,13 +35,13 @@ export default class Player extends MatterEntity {
 
   onDeath = () => {
     this.setTexture("dead", 0);
+    this.anims.stop();
     setTimeout(() => {
       console.log(this.scene);
       // this.scene.scene.pause();
       this.scene.scene.start("GameoverScene", { score: this.scene.score });
       console.log("score on death in: ", this.scene, this.scene.score);
       this.setOrigin(0.5);
-      this.anims.stop();
       this.destroy();
     }, 2500);
   };
