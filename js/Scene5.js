@@ -26,14 +26,15 @@ class Scene5 extends Phaser.Scene {
     Portal.preload(this);
     SafePortal.preload(this);
     Angel.preload(this);
-    this.load.image("dirt", "../assets/images/gladiatorScene/dirt.png");
+    this.load.image("dirt", "./assets/images/gladiatorScene/dirt.png");
     this.load.image("elements", "./assets/images/gladiatorScene/elements.png");
     this.load.image("resources", "./assets/images/gladiatorScene/resources.png");
-    this.load.tilemapTiledJSON("map", "../assets/images/gladiatorScene/gladiator-map.json");
+    this.load.image("crowd", "./assets/images/gladiatorScene/crowd.png");
+
+    this.load.tilemapTiledJSON("map4", "./assets/images/gladiatorScene/gladiator-map.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
-    this.load.image("crowd", "../assets/images/crowd/crowd.png");
-    this.load.audio("easterEgg", "./assets/audio/entertained.mp3");
+    this.load.audio("easterEggentertained", "./assets/audio/entertained.mp3");
     this.load.audio("laugh", "./assets/audio/crowdlaugh.mp3");
   }
 
@@ -45,7 +46,7 @@ class Scene5 extends Phaser.Scene {
     // }, 2000);
 
     // console.log("hello bridge scene", this.matter);
-    const map = this.make.tilemap({ key: "map" });
+    const map = this.make.tilemap({ key: "map4" });
     this.map = map;
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
@@ -57,6 +58,7 @@ class Scene5 extends Phaser.Scene {
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     const layer4 = map.createLayer("Tile Layer 4", groundObjects, 0, 0);
     const layer5 = map.createLayer("Tile Layer 5", crowd, 0, 0);
+
     const particles = this.add.particles("particle");
     let angelSound = this.sound.add("angelSound");
 
@@ -72,6 +74,9 @@ class Scene5 extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer3);
     layer4.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer4);
+    layer5.setCollisionByProperty({ collides: true });
+    this.matter.world.convertTilemapLayer(layer5);
+
     this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
@@ -154,7 +159,7 @@ class Scene5 extends Phaser.Scene {
       active: true,
     });
     //EASTER EGG PLAYER
-    let easterEgg = this.sound.add("easterEgg");
+    let easterEgg = this.sound.add("easterEggentertained");
     this.input.keyboard.on("keydown-Q", function () {
       easterEgg.play();
       console.log("You found the Q button Easter egg");

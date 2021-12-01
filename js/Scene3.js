@@ -26,13 +26,13 @@ class Scene3 extends Phaser.Scene {
     Portal.preload(this);
     SafePortal.preload(this);
     Angel.preload(this);
-    this.load.image("dirt", "../assets/images/bridgeScene/dirt.png");
+    this.load.image("dirt", "./assets/images/bridgeScene/dirt.png");
     this.load.image("elements", "./assets/images/bridgeScene/elements.png");
     this.load.image("resources", "./assets/images/bridgeScene/resources.png");
     this.load.tilemapTiledJSON("map3", "./assets/images/bridgeScene/opening-scene-map3.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
-    this.load.audio("easterEgg", "./assets/audio/epicsax.mp3");
+    this.load.audio("easterEggsax", "./assets/audio/epicsax.mp3");
   }
 
   create() {
@@ -53,7 +53,7 @@ class Scene3 extends Phaser.Scene {
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     const particles = this.add.particles("particle");
     let angelSound = this.sound.add("angelSound");
-
+    this.load.audio("easterEggsax", "./assets/audio/epicsax.mp3");
     //add score
     this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
     // console.log("score at scene 3 is: ", this.score);
@@ -145,7 +145,7 @@ class Scene3 extends Phaser.Scene {
       active: true,
     });
     //EASTER EGG PLAYER
-    let easterEgg = this.sound.add("easterEgg");
+    let easterEgg = this.sound.add("easterEggsax");
     this.input.keyboard.on("keydown-Q", function () {
       easterEgg.play();
       console.log("You found the Q button Easter egg");

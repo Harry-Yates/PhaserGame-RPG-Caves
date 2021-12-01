@@ -29,7 +29,7 @@ class Scene2 extends Phaser.Scene {
     this.load.image("elements", "./assets/images/DeathTrapScene/elements.png");
     this.load.image("resources", "./assets/images/DeathTrapScene/resources.png");
     this.load.tilemapTiledJSON("map2", "./assets/images/DeathTrapScene/opening-scene-map2.json");
-    this.load.audio("easterEgg", "./assets/audio/sonofa.mp3");
+    this.load.audio("easterEggsonfa", "./assets/audio/sonofa.mp3");
   }
 
   create() {
@@ -86,7 +86,7 @@ class Scene2 extends Phaser.Scene {
     });
 
     //EASTER EGG PLAYER
-    let easterEgg = this.sound.add("easterEgg");
+    let easterEgg = this.sound.add("easterEggsonfa");
     this.input.keyboard.on("keydown-Q", function () {
       easterEgg.play();
       console.log("You found the Q button Easter egg");
