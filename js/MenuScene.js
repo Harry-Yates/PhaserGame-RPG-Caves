@@ -5,6 +5,7 @@ class MenuScene extends Phaser.Scene {
 
   preload() {
     this.load.image("background", "./assets/images/menuscene/title_bg.png");
+
     this.load.audio("title_music", "./assets/audio/title_music.mp3");
     this.inputKeys = this.input.keyboard.addKeys({
       start: Phaser.Input.Keyboard.KeyCodes.E,
@@ -42,7 +43,7 @@ class MenuScene extends Phaser.Scene {
       // gravityX: -1,
       accelerationY: 0.00000000000001,
       // accelerationX: 0.00000000000001,
-      alpha: 0.2,
+      alpha: 0.7,
       // maxVelocityX: 10,
       maxVelocityY: 10,
       // active: true,
@@ -62,7 +63,7 @@ class MenuScene extends Phaser.Scene {
       // gravityX: -1,
       accelerationY: 0.00000000000001,
       // accelerationX: 0.00000000000001,
-      alpha: 0.2,
+      alpha: 0.9,
       // maxVelocityX: 10,
       maxVelocityY: 10,
       // active: true,
