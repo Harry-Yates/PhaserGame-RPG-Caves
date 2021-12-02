@@ -3,6 +3,7 @@ import SceneOne from "./SceneOne.js";
 import Scene2 from "./Scene2.js";
 import Scene3 from "./Scene3.js";
 import Scene5 from "./Scene5.js";
+import Scene6 from "./Scene6.js";
 import Scene4endscene from "./Scene4endscene.js";
 import GameoverScene from "./GameoverScene.js";
 import GamewinScene from "./GamewinScene.js";
@@ -13,9 +14,9 @@ const config = {
   backgroundColor: "#333333",
   type: Phaser.AUTO,
   parent: "phaser-game",
-  scene: [MenuScene, SceneOne, Scene2, Scene3, Scene5, Scene4endscene, GamewinScene, GameoverScene],
+  scene: [MenuScene, SceneOne, Scene2, Scene3, Scene5, Scene6, Scene4endscene, GamewinScene, GameoverScene],
   // scene: [Scene3, Scene5, Scene4endscene, GamewinScene, GameoverScene],
-  // scene: [Scene5, Scene4endscene, GamewinScene, GameoverScene],
+  // scene: [Scene6, Scene4endscene, GamewinScene, GameoverScene],
   // scene: [GamewinScene],
 
   // scene: [Scene2],

@@ -6,9 +6,9 @@ import SafePortal from "./SafePortal.js";
 import Angel from "./Angel.js";
 
 var coinEventListener;
-class Scene5 extends Phaser.Scene {
+class Scene6 extends Phaser.Scene {
   constructor() {
-    super("scene5");
+    super("scene6");
     this.enemies = [];
     this.textbubble, this.content, this.score;
   }
@@ -26,16 +26,16 @@ class Scene5 extends Phaser.Scene {
     Portal.preload(this);
     SafePortal.preload(this);
     Angel.preload(this);
-    this.load.image("dirt", "./assets/images/gladiatorScene/dirt.png");
-    this.load.image("elements", "./assets/images/gladiatorScene/elements.png");
-    this.load.image("resources", "./assets/images/gladiatorScene/resources.png");
-    this.load.image("crowd", "./assets/images/gladiatorScene/crowd.png");
+    this.load.image("dirt", "./assets/images/orkhordscene/dirt.png");
+    this.load.image("elements", "./assets/images/orkhordscene/elements.png");
+    this.load.image("resources", "./assets/images/orkhordscene/resources.png");
+    // this.load.image("crowd", "./assets/images/orkhordscene/crowd.png");
 
-    this.load.tilemapTiledJSON("map4", "./assets/images/gladiatorScene/gladiator-map.json");
+    this.load.tilemapTiledJSON("map6", "./assets/images/orkhordscene/ork-hord.json");
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
-    this.load.audio("easterEggentertained", "./assets/audio/entertained.mp3");
-    this.load.audio("laugh", "./assets/audio/crowdlaugh.mp3");
+    this.load.audio("easterEggdance", "./assets/audio/dance.mp3");
+    // this.load.audio("laugh", "./assets/audio/crowdlaugh.mp3");
   }
 
   create() {
@@ -46,7 +46,7 @@ class Scene5 extends Phaser.Scene {
     // }, 2000);
 
     // console.log("hello bridge scene", this.matter);
-    const map = this.make.tilemap({ key: "map4" });
+    const map = this.make.tilemap({ key: "map6" });
     this.map = map;
     const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
@@ -56,8 +56,8 @@ class Scene5 extends Phaser.Scene {
     const layer1 = map.createLayer("Tile Layer 1", groundDirt, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
-    const layer4 = map.createLayer("Tile Layer 4", groundObjects, 0, 0);
-    const layer5 = map.createLayer("Tile Layer 5", crowd, 0, 0);
+    const layer4 = map.createLayer("Tile Layer 4", resources, 0, 0);
+    const layer5 = map.createLayer("Tile Layer 5", groundObjects, 0, 0);
 
     const particles = this.add.particles("particle");
     let angelSound = this.sound.add("angelSound");
@@ -81,9 +81,9 @@ class Scene5 extends Phaser.Scene {
     this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
     this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
     this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
-    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy }).setScale(3)));
+    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
 
-    this.player = new Player({ scene: this, x: 105, y: 490, texture: "main_character", frame: "u1" });
+    this.player = new Player({ scene: this, x: 300, y: 490, texture: "main_character", frame: "u1" });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -96,7 +96,7 @@ class Scene5 extends Phaser.Scene {
         this.scene.start("scene2", { score: this.score });
       } else if (bodyA.label == "safeportal" && bodyB.label == "playerSensor") {
         setTimeout(() => {
-          this.scene.start("scene6", { score: this.score });
+          this.scene.start("scene4endscene", { score: this.score });
         }, 1);
         console.log("change screen");
       } else if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
@@ -105,9 +105,9 @@ class Scene5 extends Phaser.Scene {
         }, 1);
         // console.log("An Angel!");
         angelSound.play();
-        this.textbubble = this.add.image(15, 320, "textBubble").setOrigin(0);
+        this.textbubble = this.add.image(175, 320, "textBubble").setOrigin(0);
         this.textbubble.setScale(0.095);
-        this.content = this.add.text(10, 320, "The Cross!!", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
+        this.content = this.add.text(171, 320, "The Sword!", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
       }
 
       // console.log(bodyA.label);
@@ -142,7 +142,7 @@ class Scene5 extends Phaser.Scene {
       }
     });
     const emitter = particles.createEmitter({
-      x: 83,
+      x: 240,
       y: 360,
       speed: 200,
       scale: 0.06,
@@ -159,14 +159,14 @@ class Scene5 extends Phaser.Scene {
       active: true,
     });
     //EASTER EGG PLAYER
-    let easterEgg = this.sound.add("easterEggentertained");
+    let easterEgg = this.sound.add("easterEggdance");
     this.input.keyboard.on("keydown-Q", function () {
       easterEgg.play();
       console.log("You found the Q button Easter egg");
     });
 
-    var music = this.sound.add("laugh");
-    music.play();
+    // var music = this.sound.add("laugh");
+    // music.play();
   }
 
   update() {
@@ -175,4 +175,4 @@ class Scene5 extends Phaser.Scene {
   }
 }
 
-export default Scene5;
+export default Scene6;
