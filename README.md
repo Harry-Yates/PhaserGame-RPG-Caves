@@ -21,12 +21,11 @@ To start/reset the game.
 
 There is a different Easter Egg SFX on each scene mapped to:
 
-- Q: Play hidden SFX.
+- Q: Play hidden sound effect.
 
 ### :open_file_folder: The Brief:
 
 - Create a game using the Phaser 3 framework.
-- The game will be presented at an industy leaders expo on Dec 03 2021.
 
 ### :hourglass_flowing_sand: Time spent / Deadline:
 
@@ -41,9 +40,9 @@ There is a different Easter Egg SFX on each scene mapped to:
 
 ### :mechanical_arm: Solution:
 
-We decided to create a top-down RPG style game, the concept inspired by Squid Games requires the player to select between caves, some of which are safe, and others lead to player death.
+We decided to create a top-down RPG style game, the concept inspired by Squid Games requires the player to select between caves, some of which are safe, others lead to player death.
 
-There are angel statues around each scene that offer clues on which cave is safe. The player has to find the correct cave under the duress of troll and goblin attacks.
+There are particle emitting angel statues around each scene that offer clues on which cave is safe. The player has to find the correct cave under the duress of troll and golem attacks.
 
 Building the game gave us solid learnings working with Phaser. Including building scenes, physics engines (Matter Physics), custom classes, working with Atlas packers, creating animations with sprite sheets and particle emitters, designing with Figma and pulling it together with JavaScript.
 
@@ -62,12 +61,13 @@ Building the game gave us solid learnings working with Phaser. Including buildin
 - Working with Tiled
   - Animation
   - Spritesheets
+  - Object layers
 
 ### :interrobang: Future Improvements & Current Bugs:
 
 Event Listener Bug
 
-- We have a bug that is caused by the event listeners duplication when the game resets. When the first scene is reset, the enemies don't know who to attack at the game crashes.
+- We have a bug that is caused by event listener duplication when the game resets. When the game is reset, the enemies don't know who to attack at the game crashes.
 
 Angel Crash Bug
 
@@ -75,7 +75,7 @@ Angel Crash Bug
 
 Treasure Score Bug
 
-- Sometimes, the score is not counted on treasure collection. This seems to be caused in chances when there are a lot of colliders.
+- Sometimes, the score is not counted on treasure collection. This seems to be caused in instances when there are a lot of colliders.
 
 ### :computer: Tech used in this specific repository:
 
