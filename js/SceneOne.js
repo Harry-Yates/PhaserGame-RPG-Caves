@@ -24,7 +24,6 @@ export default class SceneOne extends Phaser.Scene {
     this.load.image("resources", "./assets/images/map-environment/resources.png");
 
     this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
-    // text box
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
     this.load.audio("easterEgg", "./assets/audio/thriller.mp3");
@@ -33,14 +32,6 @@ export default class SceneOne extends Phaser.Scene {
     });
   }
   create() {
-    // this.scale.displaySize.setAspectRatio(width / height);
-    // this.scale.refresh();
-    // setTimeout(() => {
-    //   this.scene.start("scene2");
-    // }, 1);
-
-    // console.log("hello death trap", this.matter);
-
     const map = this.make.tilemap({ key: "map" });
     this.map = map;
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
