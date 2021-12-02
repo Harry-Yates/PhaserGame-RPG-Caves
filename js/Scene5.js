@@ -58,7 +58,6 @@ class Scene5 extends Phaser.Scene {
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
     const layer4 = map.createLayer("Tile Layer 4", groundObjects, 0, 0);
     const layer5 = map.createLayer("Tile Layer 5", crowd, 0, 0);
-
     const particles = this.add.particles("particle");
     let angelSound = this.sound.add("angelSound");
 
