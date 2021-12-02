@@ -36,7 +36,7 @@ There is a different Easter Egg SFX on each scene mapped to:
 - Build a Game with Phaser 3.
 - Develop strong teamwork patterns - Agile Development, Scrum methods.
 - JavaScript functions.
-- User Firebase to store the scores.
+- Use Firebase to store the scores.
 
 ### :mechanical_arm: Solution:
 
@@ -44,7 +44,7 @@ We decided to create a top-down RPG style game, the concept inspired by Squid Ga
 
 There are particle emitting angel statues around each scene that offer clues on which cave is safe. The player has to find the correct cave under the duress of troll and golem attacks.
 
-Building the game gave us solid learnings working with Phaser. Including building scenes, physics engines (Matter Physics), custom classes, working with Atlas packers, creating animations with sprite sheets and particle emitters, designing with Figma and pulling it together with JavaScript.
+Building the game gave us solid learnings working with Phaser 3. Including building scenes, physics engines (Matter Physics), custom classes, working with Atlas packers, creating animations with sprite sheets and particle emitters, designing with Figma and pulling it together with JavaScript.
 
 ### :man_student: Learnings:
 
