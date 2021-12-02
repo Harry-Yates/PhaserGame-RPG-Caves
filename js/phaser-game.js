@@ -15,6 +15,7 @@ const config = {
   type: Phaser.AUTO,
   parent: "phaser-game",
   scene: [MenuScene, SceneOne, Scene2, Scene3, Scene5, Scene6, Scene4endscene, GamewinScene, GameoverScene],
+  scene: [Scene4endscene, GamewinScene, GameoverScene],
   // scene: [GamewinScene, GameoverScene],
 
   scale: {
