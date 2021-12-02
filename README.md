@@ -8,21 +8,20 @@ Hyper Island - If this, then that Module - Brief 3.
 
 ### :video_game: The Game:
 
-A keyboard is required to play this game.
+A keyboard is required to play this game. Player movement controls mapped to:
 
-Keyboard Controls
-Player movement controls mapped to:
+- W: Move forward
+- A: Move left
+- S: Move back
+- D: Move right
 
-W: Move forward
-A: Move left
-S: Move back
-D: Move right
+To start/reset the game.
 
-To start/reset the game, press E on relevant scenes.
+- E: (on relevant scenes.)
 
 There is a different Easter Egg SFX on each scene mapped to:
 
-Q: Play hidden SFX.
+- Q: Play hidden SFX.
 
 ### :open_file_folder: The Brief:
 
