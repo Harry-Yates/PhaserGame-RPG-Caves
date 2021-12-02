@@ -15,16 +15,12 @@ const config = {
   type: Phaser.AUTO,
   parent: "phaser-game",
   scene: [MenuScene, SceneOne, Scene2, Scene3, Scene5, Scene6, Scene4endscene, GamewinScene, GameoverScene],
-  // scene: [Scene3, Scene5, Scene4endscene, GamewinScene, GameoverScene],
-  // scene: [Scene6, Scene4endscene, GamewinScene, GameoverScene],
-  // scene: [GamewinScene],
+  scene: [GamewinScene, GameoverScene],
 
-  // scene: [Scene2],
-  // scene: [Scene3],
-  // scene: [Scene4endscene],
   scale: {
-    // mode: Phaser.Scale.FIT,
-    zoom: 1.5,
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    // zoom: 1.5,
   },
   physics: {
     default: "matter",
