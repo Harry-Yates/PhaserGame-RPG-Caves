@@ -83,7 +83,7 @@ Treasure Score Bug
 - Git Hub
 - HTML
 - JavaScript
-- [Phaser 3](https://https://phaser.io/phaser3)
+- [Phaser 3](https://phaser.io/phaser3)
 - Matter Physics
-- [Tiled - Tilemap editor](https://https://www.mapeditor.org/)
-- [GammaFP - Atlas Packer & Animator tools](https://https://gammafp.com/tools)
+- [Tiled - Tilemap editor](https://www.mapeditor.org/)
+- [GammaFP - Atlas Packer & Animator tools](https://gammafp.com/tools)
