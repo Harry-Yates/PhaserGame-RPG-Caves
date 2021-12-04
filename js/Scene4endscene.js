@@ -30,6 +30,7 @@ class Scene4endscene extends Phaser.Scene {
     this.load.image("resources", "./assets/images/endScene/resources.png");
     this.load.image("endportal", "./assets/images/endportal/endportal.png");
     this.load.tilemapTiledJSON("end-scene", "./assets/images/endScene/end-scene.json");
+    this.load.image("particle", "./assets/images/blueparticle.png");
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("Chopper", "./assets/images/chopper.png");
     this.load.audio("choppa", "./assets/audio/choppa.mp3");
@@ -55,6 +56,7 @@ class Scene4endscene extends Phaser.Scene {
     const layer1 = map.createLayer("Tile Layer 1", resources, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", resources, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
+    const particles = this.add.particles("particle");
     let angelSound = this.sound.add("angelSound");
     let choppa = this.sound.add("choppa");
 
@@ -134,6 +136,24 @@ class Scene4endscene extends Phaser.Scene {
       });
       coinEventListener = true;
     }
+
+    const emitter = particles.createEmitter({
+      x: 177,
+      y: 265,
+      speed: 200,
+      scale: 0.06,
+      speed: 6,
+      lifespan: 7000,
+      blendMode: "NORMAL",
+      frequency: 800,
+      gravityY: -20,
+      gravityX: 1,
+      alpha: 1,
+      // delay: 3400,
+      maxVelocityX: 10,
+      maxVelocityY: 10,
+      active: true,
+    });
 
     //EASTER EGG PLAYER
     let easterEgg = this.sound.add("easterEggdeja");

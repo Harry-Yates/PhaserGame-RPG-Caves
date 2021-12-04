@@ -32,7 +32,6 @@ class MenuScene extends Phaser.Scene {
     const smokey = smoke.createEmitter({
       x: 265,
       y: 490,
-      speed: 200,
       scale: 0.7,
       speed: 0.1,
       frequency: 900,

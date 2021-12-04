@@ -67,7 +67,7 @@ Building the game gave us solid learnings working with Phaser 3. Including build
 
 Event Listener Bug
 
-- We have a bug that is caused by event listener duplication when the game resets. When the game is reset, the enemies don't know who to attack at the game crashes.
+- We have a bug that is caused by the duplication of event listeners when the game resets. The enemies don't know who to attack and the game crashes.
 
 Angel Crash Bug
 
