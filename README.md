@@ -1,7 +1,5 @@
 # Caves - A Phaser 3 RPG Game
 
----
-
 Hyper Island - If this, then that Module - Brief 3.
 
 https://user-images.githubusercontent.com/82885837/150153523-2d47634e-3d46-46ff-807b-cab699e4f406.mp4
