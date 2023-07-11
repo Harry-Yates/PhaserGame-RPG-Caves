@@ -21,9 +21,15 @@ export default class SceneOne extends Phaser.Scene {
     Angel.preload(this);
     this.load.image("dirt", "./assets/images/map-environment/dirt.png");
     this.load.image("elements", "./assets/images/map-environment/elements.png");
-    this.load.image("resources", "./assets/images/map-environment/resources.png");
+    this.load.image(
+      "resources",
+      "./assets/images/map-environment/resources.png"
+    );
 
-    this.load.tilemapTiledJSON("map", "./assets/images/map-environment/opening-scene-map.json");
+    this.load.tilemapTiledJSON(
+      "map",
+      "./assets/images/map-environment/opening-scene-map.json"
+    );
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
     this.load.audio("easterEgg", "./assets/audio/thriller.mp3");
@@ -35,8 +41,22 @@ export default class SceneOne extends Phaser.Scene {
     const map = this.make.tilemap({ key: "map" });
     this.map = map;
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
-    const groundObjects = map.addTilesetImage("elements", "elements", 32, 32, 0, 0);
-    const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
+    const groundObjects = map.addTilesetImage(
+      "elements",
+      "elements",
+      32,
+      32,
+      0,
+      0
+    );
+    const resources = map.addTilesetImage(
+      "resources",
+      "resources",
+      32,
+      32,
+      0,
+      0
+    );
     const layer1 = map.createLayer("Tile Layer 1", groundDirt, 0, 0);
     const layer2 = map.createLayer("Tile Layer 2", groundObjects, 0, 0);
     const layer3 = map.createLayer("Tile Layer 3", resources, 0, 0);
@@ -52,12 +72,32 @@ export default class SceneOne extends Phaser.Scene {
     this.matter.world.convertTilemapLayer(layer3);
     layer4.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer4);
-    this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
-    this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
-    this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
-    this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
-    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy })));
-    this.player = new Player({ scene: this, x: 180, y: 480, texture: "main_character", frame: "u1" });
+    this.map
+      .getObjectLayer("Treasure")
+      .objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
+    this.map
+      .getObjectLayer("Portal")
+      .objects.forEach((portal) => new Portal({ scene: this, portal }));
+    this.map
+      .getObjectLayer("SafePortal")
+      .objects.forEach(
+        (safeportal) => new SafePortal({ scene: this, safeportal })
+      );
+    this.map
+      .getObjectLayer("Angel")
+      .objects.forEach((angel) => new Angel({ scene: this, angel }));
+    this.map
+      .getObjectLayer("Enemies")
+      .objects.forEach((enemy) =>
+        this.enemies.push(new Enemy({ scene: this, enemy }))
+      );
+    this.player = new Player({
+      scene: this,
+      x: 180,
+      y: 480,
+      texture: "main_character",
+      frame: "u1",
+    });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -83,7 +123,15 @@ export default class SceneOne extends Phaser.Scene {
         angelSound.play();
         this.textbubble = this.add.image(280, 320, "textBubble").setOrigin(0);
         this.textbubble.setScale(0.09);
-        this.content = this.add.text(280, 318, "Left cave", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 70 } }).setOrigin(0);
+        this.content = this.add
+          .text(280, 318, "Left cave", {
+            fontFamily: "Arial",
+            fontSize: 15,
+            padding: 10,
+            color: "#333",
+            wordWrap: { width: 70 },
+          })
+          .setOrigin(0);
       }
     });
 
@@ -99,7 +147,10 @@ export default class SceneOne extends Phaser.Scene {
       }
     });
 
-    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
+    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, {
+      fontSize: "20px",
+      fill: "#fff",
+    });
 
     this.matter.world.on("collisionstart", (event, bodyA, bodyB) => {
       // console.log("name before scene 1", bodyA.label, bodyB.label);
@@ -137,7 +188,15 @@ export default class SceneOne extends Phaser.Scene {
   }
 
   update() {
+    this.enemies = this.enemies.filter((enemy) => enemy && enemy.body);
     this.enemies.forEach((enemy) => enemy.update());
     this.player.update();
+  }
+
+  shutdown() {
+    if (this.music) {
+      this.music.stop();
+      this.music = null;
+    }
   }
 }

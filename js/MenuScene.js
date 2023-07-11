@@ -187,10 +187,14 @@ class MenuScene extends Phaser.Scene {
 
   update() {
     if (this.inputKeys.start.isDown) {
-      // console.log("buttonE is pressed");
       this.sound.get("title_music").stop();
+      this.scene.stop("MenuScene");
       this.scene.start("SceneOne");
     }
+  }
+
+  shutdown() {
+    this.sound.get("title_music").stop();
   }
 }
 export default MenuScene;

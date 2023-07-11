@@ -19,7 +19,10 @@ class GamewinScene extends Phaser.Scene {
   create() {
     var bg = this.add.sprite(0, 0, "background3");
     bg.setOrigin(0, 0);
-    this.scoreText = this.add.text(166, 364, `${this.score}`, { fontSize: "32px", fill: "#fff" });
+    this.scoreText = this.add.text(166, 364, `${this.score}`, {
+      fontSize: "32px",
+      fill: "#fff",
+    });
     const particles = this.add.particles("particle");
 
     var music = this.sound.add("gamewin");
@@ -102,7 +105,14 @@ class GamewinScene extends Phaser.Scene {
     if (this.inputKeys.start.isDown) {
       this.scene.start("MenuScene");
       this.sound.get("gamewin").stop();
-      console.log(this.scene);
+      window.location.reload();
+    }
+  }
+
+  shutdown() {
+    if (this.music) {
+      this.music.stop();
+      this.music = null;
     }
   }
 }
