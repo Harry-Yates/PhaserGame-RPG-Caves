@@ -26,6 +26,7 @@ export default class Player extends MatterEntity {
     this.interactionCollision(playerCollider);
     this.scene.input.on("pointerdown", this.handleTouchInput, this);
     this.scene.input.on("pointerup", this.stopPlayer, this);
+    this.scene.input.on("pointermove", this.handleTouchInput, this);
 
     // Add arrow key input
     this.cursors = this.scene.input.keyboard.createCursorKeys();
@@ -119,27 +120,40 @@ export default class Player extends MatterEntity {
   }
 
   handleTouchInput(pointer) {
+    if (!pointer.isDown) return; // Only handle input if the pointer is down
+
     const speed = 3.5;
     let playerVelocity = new Phaser.Math.Vector2();
 
-    if (pointer.x < this.scene.sys.game.config.width / 2) {
-      // Touch on the left side of the screen
+    const halfWidth = this.scene.sys.game.config.width / 2;
+    const halfHeight = this.scene.sys.game.config.height / 2;
+
+    if (pointer.x < halfWidth && pointer.y < halfHeight) {
+      // Top-left quadrant
+      this.anims.play("walk_up", true);
+      playerVelocity.y = -1;
+    } else if (pointer.x < halfWidth && pointer.y >= halfHeight) {
+      // Bottom-left quadrant
+      this.anims.play("walk_down", true);
+      playerVelocity.y = 1;
+    } else if (pointer.x >= halfWidth && pointer.y < halfHeight) {
+      // Top-right quadrant
+      this.anims.play("walk_up", true);
+      playerVelocity.y = -1;
+    } else if (pointer.x >= halfWidth && pointer.y >= halfHeight) {
+      // Bottom-right quadrant
+      this.anims.play("walk_down", true);
+      playerVelocity.y = 1;
+    }
+
+    if (pointer.x < halfWidth) {
+      // Left side of the screen
       this.anims.play("walk_left", true);
       playerVelocity.x = -1;
     } else {
-      // Touch on the right side of the screen
+      // Right side of the screen
       this.anims.play("walk_right", true);
       playerVelocity.x = 1;
-    }
-
-    if (pointer.y < this.scene.sys.game.config.height / 2) {
-      // Touch on the upper side of the screen
-      this.anims.play("walk_up", true);
-      playerVelocity.y = -1;
-    } else {
-      // Touch on the lower side of the screen
-      this.anims.play("walk_down", true);
-      playerVelocity.y = 1;
     }
 
     playerVelocity.normalize();
