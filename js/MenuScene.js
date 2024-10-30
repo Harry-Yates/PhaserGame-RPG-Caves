@@ -183,6 +183,20 @@ class MenuScene extends Phaser.Scene {
 
     var music = this.sound.add("title_music");
     music.play();
+
+    // Add touch input to start the game
+    this.input.on("pointerdown", () => {
+      this.sound.get("title_music").stop();
+      this.scene.stop("MenuScene");
+      this.scene.start("SceneOne");
+    });
+
+    // Existing keyboard input to start the game
+    this.input.keyboard.on("keydown-E", () => {
+      this.sound.get("title_music").stop();
+      this.scene.stop("MenuScene");
+      this.scene.start("SceneOne");
+    });
   }
 
   update() {

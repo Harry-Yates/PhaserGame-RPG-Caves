@@ -8,8 +8,14 @@ export default class Player extends MatterEntity {
     this.scoreText, this.score;
     // console.log(data);
     const { Body, Bodies } = Phaser.Physics.Matter.Matter;
-    var playerCollider = Bodies.circle(this.x, this.y, 12, { isSensor: false, label: "'playerCollider'" });
-    var playerSensor = Bodies.circle(this.x, this.y, 24, { isSensor: true, label: "playerSensor" });
+    var playerCollider = Bodies.circle(this.x, this.y, 12, {
+      isSensor: false,
+      label: "'playerCollider'",
+    });
+    var playerSensor = Bodies.circle(this.x, this.y, 24, {
+      isSensor: true,
+      label: "playerSensor",
+    });
     const compoundBody = Body.create({
       parts: [playerCollider, playerSensor],
       frictionAir: 0.35,
@@ -18,6 +24,11 @@ export default class Player extends MatterEntity {
     this.setFixedRotation();
     this.createTreasureCollisions(playerSensor);
     this.interactionCollision(playerCollider);
+    this.scene.input.on("pointerdown", this.handleTouchInput, this);
+    this.scene.input.on("pointerup", this.stopPlayer, this);
+
+    // Add arrow key input
+    this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 
   init(data) {
@@ -25,10 +36,23 @@ export default class Player extends MatterEntity {
   }
 
   static preload(scene) {
-    scene.load.atlas("main_character", "./assets/images/main-character/main_character.png ", "./assets/images/main-character/main_character_atlas.json");
-    scene.load.animation("main_character", "./assets/images/main-character/main_character_anim.json");
-    scene.load.spritesheet("items", "./assets/images/items/items.png", { frameWidth: 32, frameHeight: 32 });
-    scene.load.image("dead", "./assets/images/items/dead.png", { frameWidth: 32, frameHeight: 32 });
+    scene.load.atlas(
+      "main_character",
+      "./assets/images/main-character/main_character.png ",
+      "./assets/images/main-character/main_character_atlas.json"
+    );
+    scene.load.animation(
+      "main_character",
+      "./assets/images/main-character/main_character_anim.json"
+    );
+    scene.load.spritesheet("items", "./assets/images/items/items.png", {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
+    scene.load.image("dead", "./assets/images/items/dead.png", {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
     // scene.load.audio("player", "./assets/audio/hit.wav");
     scene.load.audio("player", "./assets/audio/dead.mp3");
   }
@@ -54,32 +78,78 @@ export default class Player extends MatterEntity {
     if (this.dead) return;
     const speed = 3.5;
     let playerVelocity = new Phaser.Math.Vector2();
-    if (this.inputKeys.left.isDown) {
+
+    // Handle keyboard input
+    if (this.inputKeys.left.isDown || this.cursors.left.isDown) {
       this.anims.play("walk_left", true);
       this.collectTreasure();
       playerVelocity.x = -1;
-    } else if (this.inputKeys.right.isDown) {
+    } else if (this.inputKeys.right.isDown || this.cursors.right.isDown) {
       this.anims.play("walk_right", true);
       this.collectTreasure();
       playerVelocity.x = 1;
     }
-    if (this.inputKeys.up.isDown) {
+    if (this.inputKeys.up.isDown || this.cursors.up.isDown) {
       this.anims.play("walk_up", true);
       this.collectTreasure();
       playerVelocity.y = -1;
-    } else if (this.inputKeys.down.isDown) {
+    } else if (this.inputKeys.down.isDown || this.cursors.down.isDown) {
       this.anims.play("walk_down", true);
       this.collectTreasure();
       playerVelocity.y = 1;
     }
-    if (this.inputKeys.down.isUp && this.inputKeys.up.isUp && this.inputKeys.left.isUp && this.inputKeys.right.isUp) {
+
+    // Stop animation if no input
+    if (
+      this.inputKeys.down.isUp &&
+      this.inputKeys.up.isUp &&
+      this.inputKeys.left.isUp &&
+      this.inputKeys.right.isUp &&
+      this.cursors.down.isUp &&
+      this.cursors.up.isUp &&
+      this.cursors.left.isUp &&
+      this.cursors.right.isUp
+    ) {
       this.anims.stop();
     }
 
     playerVelocity.normalize();
-    //normalize makes sure the magnitude of the vector is 1 for the diagonal movement
     playerVelocity.scale(speed);
     this.setVelocity(playerVelocity.x, playerVelocity.y);
+  }
+
+  handleTouchInput(pointer) {
+    const speed = 3.5;
+    let playerVelocity = new Phaser.Math.Vector2();
+
+    if (pointer.x < this.scene.sys.game.config.width / 2) {
+      // Touch on the left side of the screen
+      this.anims.play("walk_left", true);
+      playerVelocity.x = -1;
+    } else {
+      // Touch on the right side of the screen
+      this.anims.play("walk_right", true);
+      playerVelocity.x = 1;
+    }
+
+    if (pointer.y < this.scene.sys.game.config.height / 2) {
+      // Touch on the upper side of the screen
+      this.anims.play("walk_up", true);
+      playerVelocity.y = -1;
+    } else {
+      // Touch on the lower side of the screen
+      this.anims.play("walk_down", true);
+      playerVelocity.y = 1;
+    }
+
+    playerVelocity.normalize();
+    playerVelocity.scale(speed);
+    this.setVelocity(playerVelocity.x, playerVelocity.y);
+  }
+
+  stopPlayer() {
+    this.setVelocity(0, 0);
+    this.anims.stop();
   }
 
   createTreasureCollisions(playerSensor) {
@@ -96,7 +166,9 @@ export default class Player extends MatterEntity {
     this.scene.matterCollision.addOnCollideEnd({
       objectA: [playerSensor],
       callback: (other) => {
-        this.touching = this.touching.filter((gameObject) => gameObject != other.gameObjectB);
+        this.touching = this.touching.filter(
+          (gameObject) => gameObject != other.gameObjectB
+        );
         // console.log(this.touching.length);
       },
       context: this.scene,
@@ -107,7 +179,8 @@ export default class Player extends MatterEntity {
     this.scene.matterCollision.addOnCollideStart({
       objectA: [playerCollider],
       callback: (other) => {
-        if (other.gameObjectB && other.gameObjectB.pickup) other.gameObjectB.pickup();
+        if (other.gameObjectB && other.gameObjectB.pickup)
+          other.gameObjectB.pickup();
       },
       context: this.scene,
     });
@@ -115,14 +188,17 @@ export default class Player extends MatterEntity {
     this.scene.matterCollision.addOnCollideActive({
       objectA: [playerCollider],
       callback: (other) => {
-        if (other.gameObjectB && other.gameObjectB.pickup) other.gameObjectB.pickup();
+        if (other.gameObjectB && other.gameObjectB.pickup)
+          other.gameObjectB.pickup();
       },
       context: this.scene,
     });
   }
 
   collectTreasure() {
-    this.touching = this.touching.filter((gameObject) => gameObject.hit && !gameObject.dead);
+    this.touching = this.touching.filter(
+      (gameObject) => gameObject.hit && !gameObject.dead
+    );
     this.touching.forEach((gameobject) => {
       gameobject.hit();
       if (gameobject.dead) gameobject.destroy();
