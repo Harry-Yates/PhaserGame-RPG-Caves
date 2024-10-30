@@ -28,10 +28,16 @@ class Scene5 extends Phaser.Scene {
     Angel.preload(this);
     this.load.image("dirt", "./assets/images/gladiatorScene/dirt.png");
     this.load.image("elements", "./assets/images/gladiatorScene/elements.png");
-    this.load.image("resources", "./assets/images/gladiatorScene/resources.png");
+    this.load.image(
+      "resources",
+      "./assets/images/gladiatorScene/resources.png"
+    );
     this.load.image("crowd", "./assets/images/gladiatorScene/crowd.png");
 
-    this.load.tilemapTiledJSON("map4", "./assets/images/gladiatorScene/gladiator-map.json");
+    this.load.tilemapTiledJSON(
+      "map4",
+      "./assets/images/gladiatorScene/gladiator-map.json"
+    );
     this.load.image("textBubble", "./assets/images/textbubble.png");
     this.load.image("particle", "./assets/images/blueparticle.png");
     this.load.audio("easterEggentertained", "./assets/audio/entertained.mp3");
@@ -48,9 +54,23 @@ class Scene5 extends Phaser.Scene {
     // console.log("hello bridge scene", this.matter);
     const map = this.make.tilemap({ key: "map4" });
     this.map = map;
-    const resources = map.addTilesetImage("resources", "resources", 32, 32, 0, 0);
+    const resources = map.addTilesetImage(
+      "resources",
+      "resources",
+      32,
+      32,
+      0,
+      0
+    );
     const groundDirt = map.addTilesetImage("dirt", "dirt", 32, 32, 0, 0);
-    const groundObjects = map.addTilesetImage("elements", "elements", 32, 32, 0, 0);
+    const groundObjects = map.addTilesetImage(
+      "elements",
+      "elements",
+      32,
+      32,
+      0,
+      0
+    );
     const crowd = map.addTilesetImage("crowd", "crowd", 32, 32, 0, 0);
 
     const layer1 = map.createLayer("Tile Layer 1", groundDirt, 0, 0);
@@ -62,7 +82,10 @@ class Scene5 extends Phaser.Scene {
     let angelSound = this.sound.add("angelSound");
 
     //add score
-    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, { fontSize: "20px", fill: "#fff" });
+    this.scoreText = this.add.text(10, 5, `score: ${this.score}`, {
+      fontSize: "20px",
+      fill: "#fff",
+    });
     // console.log("score at scene 3 is: ", this.score);
 
     layer1.setCollisionByProperty({ collides: true });
@@ -76,13 +99,33 @@ class Scene5 extends Phaser.Scene {
     layer5.setCollisionByProperty({ collides: true });
     this.matter.world.convertTilemapLayer(layer5);
 
-    this.map.getObjectLayer("Treasure").objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
-    this.map.getObjectLayer("Portal").objects.forEach((portal) => new Portal({ scene: this, portal }));
-    this.map.getObjectLayer("SafePortal").objects.forEach((safeportal) => new SafePortal({ scene: this, safeportal }));
-    this.map.getObjectLayer("Angel").objects.forEach((angel) => new Angel({ scene: this, angel }));
-    this.map.getObjectLayer("Enemies").objects.forEach((enemy) => this.enemies.push(new Enemy({ scene: this, enemy }).setScale(3)));
+    this.map
+      .getObjectLayer("Treasure")
+      .objects.forEach((treasure) => new Treasure({ scene: this, treasure }));
+    this.map
+      .getObjectLayer("Portal")
+      .objects.forEach((portal) => new Portal({ scene: this, portal }));
+    this.map
+      .getObjectLayer("SafePortal")
+      .objects.forEach(
+        (safeportal) => new SafePortal({ scene: this, safeportal })
+      );
+    this.map
+      .getObjectLayer("Angel")
+      .objects.forEach((angel) => new Angel({ scene: this, angel }));
+    this.map
+      .getObjectLayer("Enemies")
+      .objects.forEach((enemy) =>
+        this.enemies.push(new Enemy({ scene: this, enemy }).setScale(3))
+      );
 
-    this.player = new Player({ scene: this, x: 105, y: 490, texture: "main_character", frame: "u1" });
+    this.player = new Player({
+      scene: this,
+      x: 105,
+      y: 490,
+      texture: "main_character",
+      frame: "u1",
+    });
     // this.player.setScale(1.5);
     this.player.inputKeys = this.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -106,7 +149,15 @@ class Scene5 extends Phaser.Scene {
         angelSound.play();
         this.textbubble = this.add.image(15, 320, "textBubble").setOrigin(0);
         this.textbubble.setScale(0.095);
-        this.content = this.add.text(10, 320, "The Cross!!", { fontFamily: "Arial", fontSize: 15, padding: 10, color: "#333", wordWrap: { width: 100 } }).setOrigin(0);
+        this.content = this.add
+          .text(10, 320, "The Cross!!", {
+            fontFamily: "Arial",
+            fontSize: 15,
+            padding: 10,
+            color: "#333",
+            wordWrap: { width: 100 },
+          })
+          .setOrigin(0);
       }
 
       // console.log(bodyA.label);
@@ -120,9 +171,14 @@ class Scene5 extends Phaser.Scene {
     // camera.setBounds(0, 0, this.game.config.width, this.game.config.height);
     this.matter.world.on("collisionend", (event, bodyA, bodyB) => {
       if (bodyA.label == "angel" && bodyB.label == "playerSensor") {
-        // console.log("Bye Angel!");
-        this.textbubble.destroy();
-        this.content.destroy();
+        if (this.textbubble) {
+          this.textbubble.destroy();
+          this.textbubble = null;
+        }
+        if (this.content) {
+          this.content.destroy();
+          this.content = null;
+        }
       }
 
       // update score on collision

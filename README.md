@@ -63,10 +63,6 @@ Building the game gave us solid learnings working with Phaser 3. Including build
 
 ### :interrobang: Future Improvements & Current Bugs:
 
-Angel Crash Bug
-
-- On occasion, an angel will fire the text box destroy() function on inital collision. This can happen before the text box is called, and this can cause the game to crash.
-
 Treasure Score Bug
 
 - Sometimes the score is not counted on treasure collection. This seems to be caused in instances when there are a lot of colliders.
